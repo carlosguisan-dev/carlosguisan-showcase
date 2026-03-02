@@ -1,6 +1,7 @@
 # Carlosguisan Showcase - HubSpot Theme
 
-Este es el repositorio oficial del tema **Carlosguisan Showcase** para HubSpot CMS. Este proyecto utiliza un flujo de trabajo automatizado para el despliegue de cambios.
+Este es el repositorio oficial del tema secundario **Carlosguisan Showcase**, derivado con propósitos de personalización del tema **Showcase** de [Stephanie O'Gay García](https://www.stephanieogaygarcia.com/), disponible en el [marketplace de HubSpot](https://ecosystem.hubspot.com/marketplace/website/showcase-theme-by-stephanie-o-gay-garcia).
+Este proyecto utiliza un flujo de trabajo automatizado para el despliegue de cambios en Hubspot Content Hub.
 
 ## 🚀 Flujo de Trabajo (CI/CD)
 
@@ -34,4 +35,4 @@ Este repositorio está integrado con **GitHub Actions**. Cada vez que realices u
 
 ---
 
-_Desarrollado con ❤️ para Carlosguisan.dev_
+_Desarrollado con ❤️ para [Carlosguisan.dev](https://www.carlosguisan.dev/)_
