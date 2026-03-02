@@ -38,6 +38,7 @@ dist/
 build/
 tmp/
 temp/
+.vite/
 
 # Testing
 coverage/
