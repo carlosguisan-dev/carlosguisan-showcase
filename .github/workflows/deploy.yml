@@ -11,11 +11,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
+      - name: Install HubSpot CLI
+        run: npm install -g @hubspot/cli@latest
       - name: Deploy to HubSpot
-        uses: HubSpot/hubspot-cms-deploy-action@v2.1.0
-        with:
-          account_id: ${{ secrets.HUBSPOT_PORTAL_ID }}
-          personal_access_key: ${{ secrets.HUBSPOT_ACCESS_TOKEN }}
-          src_dir: "."
-          dest_dir: '\"Carlosguisan Showcase\"'
+        env:
+          HUBSPOT_ACCESS_TOKEN: ${{ secrets.HUBSPOT_ACCESS_TOKEN }}
+          HUBSPOT_PORTAL_ID: ${{ secrets.HUBSPOT_PORTAL_ID }}
+        run: |
+          hs cms upload . "Carlosguisan Showcase" --portal=$HUBSPOT_PORTAL_ID --token=$HUBSPOT_ACCESS_TOKEN
