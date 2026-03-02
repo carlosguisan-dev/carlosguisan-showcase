@@ -1,0 +1,10 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "inline_help_text" : "Módulo inspirado en <a href='https://codepen.io/Booligoosh/pen/mKPpQp' target='_blank'>Blog Posts Card Layout - Code The Web</a>",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 205302029479,
+  "label" : "Servicios",
+  "icon" : "fontawesome-5.14.0:BRIEFCASE",
+  "is_available_for_new_content" : true
+}

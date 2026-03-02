@@ -1,0 +1,186 @@
+{% set instance_id = name %}
+
+{{ require_css("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css") }}
+{{ require_js("https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js") }}
+
+{% require_css %}
+<style>
+  #{{ instance_id }} {
+    /* Section Styles */
+    --section-bg: {{ module.styles.global_styles.bg_color.color|default('#f0f2f5') }};
+    --section-padding: {{ module.styles.global_styles.padding|default(100) }}px 0;
+
+    /* Header Styles */
+    --title-font: {{ module.styles.header_styles.title_font.style }};
+    --title-color: {{ module.styles.header_styles.title_font.color|default('#1a2e05') }};
+    --title-align: {{ module.styles.header_styles.title_align|default('center') }};
+
+    /* Intro Styles */
+    --intro-font: {{ module.styles.intro_styles.intro_font.style }};
+    --intro-color: {{ module.styles.intro_styles.intro_font.color|default('#4b5563') }};
+
+    /* Card Field Styles (Global to instance) */
+    --card-title-font: {{ module.styles.card_styles.card_title_font.style }};
+    --card-title-color: {{ module.styles.card_styles.card_title_font.color|default('#1a2e05') }};
+    --card-issuer-font: {{ module.styles.card_styles.card_issuer_font.style }};
+    --card-issuer-color: {{ module.styles.card_styles.card_issuer_font.color|default('#6b7280') }};
+    --icon-size-px: {{ module.styles.card_styles.icon_size|default(40) }}px;
+    --icon-fallback-color: {{ module.styles.card_styles.icon_color.color|default('#1a2e05') }};
+
+    /* CTA Styles */
+    --cta-font: {{ module.styles.cta_styles.cta_font.style }};
+    --cta-color: {{ module.styles.cta_styles.cta_font.color|default('#1a2e05') }};
+    --cta-bg: rgba({{ (module.styles.cta_styles.cta_bg_color.color|default('#ffffff'))|convert_rgb }}, {{ (module.styles.cta_styles.cta_bg_color.opacity|default(50)) / 100 }});
+    --cta-radius: {{ module.styles.cta_styles.cta_radius|default(16) }}px;
+  }
+
+  #{{ instance_id }} .certifications-section {
+    background-color: var(--section-bg);
+    padding: var(--section-padding);
+  }
+
+  #{{ instance_id }} .section-title {
+    {{ module.styles.header_styles.title_font.style }};
+    color: var(--title-color);
+    text-align: var(--title-align);
+  }
+
+  #{{ instance_id }} .section-intro {
+    {{ module.styles.intro_styles.intro_font.style }};
+    color: var(--intro-color);
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  #{{ instance_id }} .cert-card h4 {
+    {{ module.styles.card_styles.card_title_font.style }};
+    color: var(--card-title-color);
+  }
+
+  #{{ instance_id }} .cert-card .issuer {
+    {{ module.styles.card_styles.card_issuer_font.style }};
+    color: var(--card-issuer-color);
+  }
+
+  #{{ instance_id }} .cert-link {
+    {{ module.styles.cta_styles.cta_font.style }};
+    color: var(--cta-color);
+    background-color: var(--cta-bg);
+    border-radius: var(--cta-radius);
+  }
+
+  #{{ instance_id }} .certs-grid {
+    grid-template-columns: repeat({{ module.styles.layout_settings.items_mobile }}, 1fr);
+  }
+
+  @media (min-width: 768px) {
+    #{{ instance_id }} .certs-grid {
+      grid-template-columns: repeat({{ module.styles.layout_settings.items_tablet }}, 1fr);
+    }
+  }
+
+  @media (min-width: 1024px) {
+    #{{ instance_id }} .certs-grid {
+      grid-template-columns: repeat({{ module.styles.layout_settings.items_desktop }}, 1fr);
+    }
+  }
+</style>
+{% end_require_css %}
+
+<section id="{{ instance_id }}" class="certifications-section">
+  <div class="container">
+    
+    {% if module.config.show_header and module.config.section_title %}
+      <h1 class="section-title">
+        {{ module.config.section_title }}
+      </h1>
+    {% endif %}
+    
+    {% if module.config.show_intro and module.config.section_intro %}
+      <p class="section-intro">
+        {{ module.config.section_intro }}
+      </p>
+    {% endif %}
+    
+    <div class="certs-container swiper certs-swiper">
+      <div class="swiper-wrapper">
+        {% for cert in module.certifications %}
+          <div class="swiper-slide">
+            <div class="cert-card cert-card--{{ module.styles.card_styles.variant }}" 
+                 style="--grad: {{ cert.grad_1.color|default('#f97316') }}, {{ cert.grad_2.color|default('#ea580c') }}; --icon-size: var(--icon-size-px); --icon-color: var(--icon-fallback-color);">
+              <div class="cert-title-area">
+                <h4>{{ cert.title }}</h4>
+              </div>
+              
+              <div class="cert-icon-area">
+                {% if cert.embed_code %}
+                  <div class="cert-badge embed-badge">
+                    {{ cert.embed_code }}
+                  </div>
+                {% elif cert.badge_icon.name %}
+                   <div class="cert-badge icon-badge">
+                      {% icon
+                        name="{{ cert.badge_icon.name }}",
+                        style="{{ cert.badge_icon.type }}",
+                        unicode="{{ cert.badge_icon.unicode }}",
+                        icon_set="{{ cert.badge_icon.icon_set }}"
+                      %}
+                   </div>
+                {% endif %}
+              </div>
+              
+              <div class="cert-content-area">
+                <p class="issuer">{{ cert.issuer }}</p>
+                {% if cert.url.href %}
+                  <a href="{{ cert.url.href }}" 
+                     class="cert-link {% if module.styles.cta_styles.use_hover_grad %}cert-link--hover-grad{% endif %}" 
+                     {% if cert.url.open_in_new_tab %}target="_blank"{% endif %} 
+                     {% if cert.url.no_follow %}rel="nofollow"{% endif %}>
+                    Ver Certificación <i class="fas fa-external-link-alt"></i>
+                  </a>
+                {% endif %}
+              </div>
+              
+              <div class="cert-bar-area"></div>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+      
+      <div class="swiper-pagination"></div>
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+    </div>
+    
+  </div>
+</section>
+
+{% require_js %}
+<script>
+  (function() {
+    new Swiper('#{{ instance_id }} .certs-swiper', {
+      slidesPerView: {{ module.styles.layout_settings.items_mobile }},
+      spaceBetween: 30,
+      watchOverflow: true,
+      pagination: {
+        el: '#{{ instance_id }} .swiper-pagination',
+        clickable: true,
+        dynamicBullets: true,
+      },
+      navigation: {
+        nextEl: '#{{ instance_id }} .swiper-button-next',
+        prevEl: '#{{ instance_id }} .swiper-button-prev',
+      },
+      breakpoints: {
+        768: {
+          slidesPerView: {{ module.styles.layout_settings.items_tablet }},
+        },
+        1024: {
+          slidesPerView: {{ module.styles.layout_settings.items_desktop }},
+        }
+      }
+    });
+  })();
+</script>
+{% end_require_js %}

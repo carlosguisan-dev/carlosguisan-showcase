@@ -1,0 +1,82 @@
+{# Module Styling #}
+{% require_css %}
+<style>
+  {% scope_css %}
+
+  .hero {
+    {% if module.styles.background.color.color %}
+    background-color: rgba({{ module.styles.background.color.color|convert_rgb }}, {{ module.styles.background.color.opacity / 100 }});
+    {% endif %}
+    {{ module.styles.background.image.css }}
+    {% if module.styles.size.minimum_height %}
+    min-height: {{ module.styles.size.minimum_height ~ 'rem' }};
+    {% endif %}
+  }
+  
+  {% if module.styles.background.gradient_overlay.css %}
+  .hero__gradient-overlay {
+    background: {{ module.styles.background.gradient_overlay.css }};
+  }
+  {% endif %}
+
+  {% if module.styles.content.background.color.color %}
+  .hero:after, 
+  .hero__subheading,
+  .hero__heading, 
+  .hero__supporting-text {
+    background-color: rgba({{ module.styles.content.background.color.color|convert_rgb }}, {{ module.styles.content.background.color.opacity / 100 }});
+  }
+  {% endif %}
+
+  {% if module.styles.subheading.text.font.css %}
+  .hero__subheading {
+    {% if module.styles.subheading.text.font.color %}
+      color: {{ module.styles.subheading.text.font.color }};
+    {% endif %}
+    {{ module.styles.subheading.text.font.style }};
+    {{ module.styles.subheading.text.font.css }}
+  }
+  {% endif %}  
+  
+  {% if module.styles.heading.text.font.css %}
+  .hero__heading {
+    {% if module.styles.heading.text.font.color %}
+      color: {{ module.styles.heading.text.font.color }};
+    {% endif %}
+    {{ module.styles.heading.text.font.style }};
+    {{ module.styles.heading.text.font.css }}
+  }
+  {% endif %} 
+  
+  {% if module.styles.supporting_text.text.font.css %}
+  .hero__supporting-text,
+  .hero__supporting-text div,
+  .hero__supporting-text p {
+    {% if module.styles.supporting_text.text.font.color %}
+      color: {{ module.styles.supporting_text.text.font.color }};
+    {% endif %}
+    {{ module.styles.supporting_text.text.font.style }};
+    {{ module.styles.supporting_text.text.font.css }}
+  }
+  {% endif %} 
+  
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+{# Hero Banner #}
+<section class="hero">
+  <div class="content-wrapper content-wrapper--vertical-spacing">
+    
+    {# Gradient Overlay #}
+    <div class="hero__gradient-overlay"></div>
+    
+    {# Content #}
+    <div class="hero__content">
+      <p class="hero__subheading">{{ module.subheading }}</p><br>
+      <h1 class="hero__heading">{{ module.heading }}</h1>
+      <div class="hero__supporting-text">{{ module.supporting_text }}</div>
+    </div>
+    
+  </div>
+</section>

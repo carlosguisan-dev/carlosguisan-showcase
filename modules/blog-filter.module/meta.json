@@ -1,0 +1,19 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "host_template_types" : [ "PAGE", "BLOG_POST" ],
+  "module_id" : 197896020649,
+  "css_assets" : [ {
+    "autoload" : true,
+    "path" : "module.css",
+    "name" : "module.css"
+  } ],
+  "js_assets" : [ {
+    "autoload" : true,
+    "path" : "module.js",
+    "name" : "module.js"
+  } ],
+  "label" : "Filtro de Blog",
+  "icon" : "fontawesome-5.14.0:filter:SOLID",
+  "is_available_for_new_content" : true
+}

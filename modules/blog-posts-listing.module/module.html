@@ -1,0 +1,101 @@
+{% set instance_id = name %}
+
+{% require_css %}
+  <style>
+    /* Scoped Variables for Colors & Typography */
+    #{{ instance_id }} {
+      /* General Layout */
+      --container-max-width: {{ module.style.general_style.max_width|default(900) }}px;
+      --container-alignment: {{ module.style.general_style.alignment|default('center') }};
+      {{ module.style.general_style.padding.css }}
+
+      /* Text */
+      --text-hover-color: rgba({{ module.style.typography.text_color_hover.color|default('#333333')|convert_rgb }}, {{ module.style.typography.text_color_hover.opacity|default(100) / 100 }});
+      --title-font: {{ module.style.typography.title_font.css }};
+      --desc-font: {{ module.style.typography.description_font.css }};
+
+      /* Meta */
+      --meta-color: rgba({{ module.style.meta_style.meta_color.color|default('#666666')|convert_rgb }}, {{ module.style.meta_style.meta_color.opacity|default(100) / 100 }});
+      --meta-font: {{ module.style.meta_style.meta_font.css }};
+      --divider-color: rgba({{ module.style.meta_style.divider_color.color|default('#7d4433')|convert_rgb }}, {{ module.style.meta_style.divider_color.opacity|default(100) / 100 }});
+
+      /* Card */
+      --card-bg: rgba({{ module.style.card_style.card_bg.color|default('#e5e2d1')|convert_rgb }}, {{ module.style.card_style.card_bg.opacity|default(100) / 100 }});
+      --card-bg-reveal: rgba({{ module.style.card_style.card_bg_reveal.color|default('#e5e2d1')|convert_rgb }}, {{ module.style.card_style.card_bg_reveal.opacity|default(100) / 100 }});
+    }
+
+    /* Typography Injection */
+    #{{ instance_id }} .post-title {
+      {{ module.style.typography.title_font.css }}
+    }
+    
+    #{{ instance_id }} .post-excerpt {
+      {{ module.style.typography.description_font.css }}
+    }
+
+    #{{ instance_id }} .post-meta {
+      color: var(--meta-color);
+      {{ module.style.meta_style.meta_font.css }}
+    }
+
+    #{{ instance_id }} .post-card:hover .post-title {
+      color: var(--text-hover-color);
+    }
+  </style>
+{% end_require_css %}
+
+<div id="{{ instance_id }}" class="blog-posts-module">
+  <div class="blog-posts-container">
+    {% if is_listing_view %}
+      {% set posts = contents %}
+    {% else %}
+      {% set posts = blog_recent_posts(module.blog, module.post_count) %}
+    {% endif %}
+
+    {% for post in posts %}
+      {% set word_count = post.post_body|striptags|wordcount %}
+      {% set calc_reading_time = (word_count / 200)|round(0, 'ceil') %}
+      {% if calc_reading_time <= 0 %}{% set calc_reading_time = 1 %}{% endif %}
+      
+      <a href="{{ post.absolute_url }}" class="post-card">
+        <div class="post-card-inner">
+          <div class="post-image" style="background-image: url('{{ post.featured_image }}')"></div>
+          
+          <div class="post-content-horizontal">
+            <h3 class="post-title">{{ post.name }}</h3>
+            
+            <div class="post-content-layers">
+              {# NORMAL STATE #}
+              <div class="post-state-normal">
+                <hr class="post-divider">
+                <div class="post-meta">
+                  <span class="post-date">{{ post.publish_date|format_date('short') }}</span>
+                  <div class="post-meta-right">
+                    {% if post.tag_list %}
+                      <span class="post-meta-tags">
+                        {% for tag in post.tag_list %}
+                          <span class="post-tag-simple">{{ tag.name }}{% if not loop.last %}, {% endif %}</span>
+                        {% endfor %}
+                      </span>
+                    {% endif %}
+                    <span class="post-meta-item">{% icon name="clock" style="REGULAR", width=14 %} {{ calc_reading_time }} min</span>
+                  </div>
+                </div>
+                <div class="post-indicator">
+                  {% icon name="chevron-up" style="SOLID", width=18 %}
+                </div>
+              </div>
+
+              {# HOVER STATE #}
+              <div class="post-state-hover">
+                <p class="post-excerpt">
+                  {{ post.post_list_content|striptags|truncate(140) }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+</div>

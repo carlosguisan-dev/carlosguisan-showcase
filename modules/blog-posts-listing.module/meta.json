@@ -1,0 +1,10 @@
+{
+  "global" : false,
+  "content_types" : [ "LANDING_PAGE", "SITE_PAGE", "BLOG_LISTING", "BLOG_POST" ],
+  "inline_help_text" : "Módulo para listar notas del blog con el estilo de servicios.",
+  "host_template_types" : [ "PAGE", "BLOG_POST", "BLOG_LISTING" ],
+  "module_id" : 205399516687,
+  "label" : "Listado de Notas Blog",
+  "icon" : "fontawesome-5.14.0:TH_LIST",
+  "is_available_for_new_content" : true
+}

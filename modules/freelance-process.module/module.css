@@ -1,0 +1,66 @@
+.freelance-process-module {
+  display: block;
+  width: 100%;
+}
+
+.freelance-process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.process-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.process-indicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.process-indicator span.step-number {
+  line-height: 1;
+}
+
+.process-indicator svg {
+  width: 30px;
+  height: 30px;
+}
+
+.process-content {
+  flex: 1;
+}
+
+.step-title {
+  margin: 0 0 0.5rem 0;
+}
+
+.step-description p {
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (min-width: 768px) {
+  .freelance-process-steps {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .process-step {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+  }
+  
+  .process-indicator {
+    margin-bottom: 1rem;
+  }
+}

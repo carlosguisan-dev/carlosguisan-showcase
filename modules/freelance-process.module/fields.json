@@ -1,0 +1,318 @@
+[ {
+  "id" : "steps",
+  "name" : "steps",
+  "label" : "Steps",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "steps.step_name",
+    "default" : 1
+  },
+  "children" : [ {
+    "id" : "steps.type_selector",
+    "name" : "type_selector",
+    "label" : "Step Indicator Type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "icon", "Icon" ], [ "number", "Number" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "number"
+  }, {
+    "id" : "steps.icon",
+    "name" : "icon",
+    "label" : "Icon",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "steps.type_selector",
+      "controlling_value_regex" : "icon",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "icon_set" : "fontawesome-5.0.10",
+    "type" : "icon",
+    "display_width" : null,
+    "default" : {
+      "name" : "briefcase",
+      "type" : "SOLID"
+    }
+  }, {
+    "id" : "steps.step_name",
+    "name" : "step_name",
+    "label" : "Step Name",
+    "required" : true,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Step Title"
+  }, {
+    "id" : "steps.step_description",
+    "name" : "step_description",
+    "label" : "Description",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null,
+    "default" : "Step description goes here."
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "type_selector" : "number",
+    "icon" : {
+      "name" : "briefcase",
+      "type" : "SOLID"
+    },
+    "step_name" : "Step Title",
+    "step_description" : "Step description goes here."
+  } ]
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Style",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.numbering_style",
+    "name" : "numbering_style",
+    "label" : "Numbering Style",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "decimal", "Numeric (1, 2, 3)" ], [ "upper-alpha", "Alphanumeric (A, B, C)" ], [ "upper-roman", "Roman (I, II, III)" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "decimal"
+  }, {
+    "id" : "style.colors",
+    "name" : "colors",
+    "label" : "Colors",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.colors.indicator_bg_color",
+      "name" : "indicator_bg_color",
+      "label" : "Indicator Background Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "style.colors.indicator_text_color",
+      "name" : "indicator_text_color",
+      "label" : "Indicator Text/Icon Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "style.colors.title_color",
+      "name" : "title_color",
+      "label" : "Title Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#333333",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "style.colors.description_color",
+      "name" : "description_color",
+      "label" : "Description Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#666666",
+        "opacity" : 100
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "indicator_bg_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "indicator_text_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "title_color" : {
+        "color" : "#333333",
+        "opacity" : 100
+      },
+      "description_color" : {
+        "color" : "#666666",
+        "opacity" : 100
+      }
+    }
+  }, {
+    "id" : "style.typography",
+    "name" : "typography",
+    "label" : "Typography",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.typography.indicator_font",
+      "name" : "indicator_font",
+      "label" : "Indicator Font",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 18,
+        "size_unit" : "px",
+        "styles" : { }
+      }
+    }, {
+      "id" : "style.typography.title_font",
+      "name" : "title_font",
+      "label" : "Title Font",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 24,
+        "size_unit" : "px",
+        "styles" : {
+          "font-weight" : "700"
+        }
+      }
+    }, {
+      "id" : "style.typography.description_font",
+      "name" : "description_font",
+      "label" : "Description Font",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 16,
+        "size_unit" : "px",
+        "styles" : { }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "indicator_font" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 18,
+        "size_unit" : "px",
+        "styles" : { }
+      },
+      "title_font" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 24,
+        "size_unit" : "px",
+        "styles" : {
+          "font-weight" : "700"
+        }
+      },
+      "description_font" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 16,
+        "size_unit" : "px",
+        "styles" : { }
+      }
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "colors" : {
+      "indicator_bg_color" : {
+        "color" : "#000000",
+        "opacity" : 100
+      },
+      "indicator_text_color" : {
+        "color" : "#FFFFFF",
+        "opacity" : 100
+      },
+      "title_color" : {
+        "color" : "#333333",
+        "opacity" : 100
+      },
+      "description_color" : {
+        "color" : "#666666",
+        "opacity" : 100
+      }
+    },
+    "typography" : {
+      "indicator_font" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 18,
+        "size_unit" : "px",
+        "styles" : { }
+      },
+      "title_font" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 24,
+        "size_unit" : "px",
+        "styles" : {
+          "font-weight" : "700"
+        }
+      },
+      "description_font" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 16,
+        "size_unit" : "px",
+        "styles" : { }
+      }
+    }
+  }
+} ]

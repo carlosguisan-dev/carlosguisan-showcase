@@ -1,0 +1,240 @@
+[ {
+  "id" : "blog",
+  "name" : "blog",
+  "label" : "Blog",
+  "required" : false,
+  "locked" : false,
+  "type" : "blog",
+  "display_width" : null,
+  "default" : "default"
+}, {
+  "id" : "post_count",
+  "name" : "post_count",
+  "label" : "Número de posts a mostrar",
+  "help_text" : "Solo aplica cuando el módulo NO se usa en una página de listado de blog.",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "display_width" : null,
+  "default" : 3
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Estilos",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.general_style",
+    "name" : "general_style",
+    "label" : "General (Contenedor)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.general_style.max_width",
+      "name" : "max_width",
+      "label" : "Ancho Máximo del Contenedor (px)",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 900
+    }, {
+      "id" : "style.general_style.alignment",
+      "name" : "alignment",
+      "label" : "Alineación Horizontal",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "flex-start", "Izquierda" ], [ "center", "Centro" ], [ "flex-end", "Derecha" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "center"
+    }, {
+      "id" : "style.general_style.padding",
+      "name" : "padding",
+      "label" : "Relleno del Módulo (Padding)",
+      "required" : false,
+      "locked" : false,
+      "type" : "spacing",
+      "display_width" : null,
+      "default" : {
+        "padding" : {
+          "top" : {
+            "value" : 4,
+            "units" : "rem"
+          },
+          "bottom" : {
+            "value" : 4,
+            "units" : "rem"
+          },
+          "left" : {
+            "value" : 2,
+            "units" : "rem"
+          },
+          "right" : {
+            "value" : 2,
+            "units" : "rem"
+          }
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "style.typography",
+    "name" : "typography",
+    "label" : "Texto",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.typography.title_font",
+      "name" : "title_font",
+      "label" : "Fuente del Título",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 24,
+        "size_unit" : "px",
+        "styles" : {
+          "font-weight" : "700"
+        }
+      }
+    }, {
+      "id" : "style.typography.description_font",
+      "name" : "description_font",
+      "label" : "Fuente de Extracto",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Open Sans",
+        "font_set" : "GOOGLE",
+        "size" : 14,
+        "size_unit" : "px",
+        "styles" : { }
+      }
+    }, {
+      "id" : "style.typography.text_color_hover",
+      "name" : "text_color_hover",
+      "label" : "Color de Título (Hover)",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#333333"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "style.meta_style",
+    "name" : "meta_style",
+    "label" : "Metadatos (Fecha, Tags, Tiempo)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.meta_style.meta_font",
+      "name" : "meta_font",
+      "label" : "Fuente de Metadatos",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Open Sans",
+        "font_set" : "GOOGLE",
+        "size" : 12,
+        "size_unit" : "px",
+        "styles" : { }
+      }
+    }, {
+      "id" : "style.meta_style.meta_color",
+      "name" : "meta_color",
+      "label" : "Color de Texto",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#666666"
+      }
+    }, {
+      "id" : "style.meta_style.divider_color",
+      "name" : "divider_color",
+      "label" : "Color de Línea Divisoria",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#7d4433"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "style.card_style",
+    "name" : "card_style",
+    "label" : "Tarjeta",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.card_style.card_bg",
+      "name" : "card_bg",
+      "label" : "Color de Fondo de Tarjeta",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#e5e2d1"
+      }
+    }, {
+      "id" : "style.card_style.card_bg_reveal",
+      "name" : "card_bg_reveal",
+      "label" : "Fondo del Extracto (Hover)",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#e5e2d1"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

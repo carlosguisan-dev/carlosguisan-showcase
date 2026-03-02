@@ -1,0 +1,619 @@
+[ {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Styles",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "styles.background",
+    "name" : "background",
+    "label" : "Background",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.background.color",
+      "name" : "color",
+      "label" : "Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : null,
+        "opacity" : null
+      }
+    }, {
+      "id" : "styles.background.image",
+      "name" : "image",
+      "label" : "Image",
+      "required" : false,
+      "locked" : false,
+      "type" : "backgroundimage",
+      "display_width" : null,
+      "default" : {
+        "background_position" : "MIDDLE_CENTER",
+        "background_size" : "cover",
+        "src" : "https://www.stephanieogaygarcia.com/hubfs/showcase-theme/pexels-david-bartus-963278_1920x1080px.jpg"
+      }
+    }, {
+      "id" : "styles.background.gradient_overlay",
+      "name" : "gradient_overlay",
+      "label" : "Gradient Overlay",
+      "required" : false,
+      "locked" : false,
+      "type" : "gradient",
+      "display_width" : null,
+      "default" : { }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "color" : {
+        "color" : null,
+        "opacity" : null
+      },
+      "image" : {
+        "background_position" : "MIDDLE_CENTER",
+        "background_size" : "cover",
+        "src" : "https://www.stephanieogaygarcia.com/hubfs/showcase-theme/pexels-david-bartus-963278_1920x1080px.jpg"
+      }
+    }
+  }, {
+    "id" : "styles.size",
+    "name" : "size",
+    "label" : "Size",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.size.minimum_height",
+      "name" : "minimum_height",
+      "label" : "Minimum Height",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "suffix" : "rem",
+      "type" : "number",
+      "display_width" : null
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : { }
+  }, {
+    "id" : "styles.content",
+    "name" : "content",
+    "label" : "Content",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.content.background",
+      "name" : "background",
+      "label" : "Background",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.content.background.color",
+        "name" : "color",
+        "label" : "Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "display_width" : null,
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "font" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      }
+    }, {
+      "id" : "styles.content.alignment",
+      "name" : "alignment",
+      "label" : "Text Alignment",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "left", "Left" ], [ "center", "Center" ], [ "right", "Right" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "left"
+    }, {
+      "id" : "styles.content.max_width",
+      "name" : "max_width",
+      "label" : "Content Max Width",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "display_width" : null,
+      "default" : 600
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "text" : {
+        "font" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      }
+    }
+  }, {
+    "id" : "styles.subheading",
+    "name" : "subheading",
+    "label" : "Subheading",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.subheading.text",
+      "name" : "text",
+      "label" : "Text",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.subheading.text.font",
+        "name" : "font",
+        "label" : "Font",
+        "required" : false,
+        "locked" : false,
+        "load_external_fonts" : true,
+        "type" : "font",
+        "display_width" : null,
+        "default" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "font" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "text" : {
+        "font" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      }
+    }
+  }, {
+    "id" : "styles.heading",
+    "name" : "heading",
+    "label" : "Heading",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.heading.text",
+      "name" : "text",
+      "label" : "Text",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.heading.text.font",
+        "name" : "font",
+        "label" : "Font",
+        "required" : false,
+        "locked" : false,
+        "load_external_fonts" : true,
+        "type" : "font",
+        "display_width" : null,
+        "default" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "font" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "text" : {
+        "font" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      }
+    }
+  }, {
+    "id" : "styles.supporting_text",
+    "name" : "supporting_text",
+    "label" : "Supporting Text",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.supporting_text.text",
+      "name" : "text",
+      "label" : "Text",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.supporting_text.text.font",
+        "name" : "font",
+        "label" : "Font",
+        "required" : false,
+        "locked" : false,
+        "load_external_fonts" : true,
+        "type" : "font",
+        "display_width" : null,
+        "default" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null,
+      "default" : {
+        "font" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "text" : {
+        "font" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      }
+    }
+  }, {
+    "id" : "styles.buttons",
+    "name" : "buttons",
+    "label" : "Buttons",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "styles.buttons.corner_radius",
+      "name" : "corner_radius",
+      "label" : "Corner radius",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "suffix" : "px",
+      "type" : "number",
+      "display_width" : null,
+      "default" : 4
+    }, {
+      "id" : "styles.buttons.spacing",
+      "name" : "spacing",
+      "label" : "Buttons container spacing",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "suffix" : "rem",
+      "type" : "number",
+      "display_width" : null,
+      "default" : 2
+    }, {
+      "id" : "styles.buttons.primary",
+      "name" : "primary",
+      "label" : "Primary Button",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.buttons.primary.background",
+        "name" : "background",
+        "label" : "Background Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "display_width" : null,
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }, {
+        "id" : "styles.buttons.primary.text_color",
+        "name" : "text_color",
+        "label" : "Text Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "display_width" : null,
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }, {
+        "id" : "styles.buttons.primary.background_hover",
+        "name" : "background_hover",
+        "label" : "Background Color (Hover)",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "display_width" : null,
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }, {
+        "id" : "styles.buttons.primary.text_color_hover",
+        "name" : "text_color_hover",
+        "label" : "Text Color (Hover)",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "display_width" : null,
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null
+    }, {
+      "id" : "styles.buttons.secondary",
+      "name" : "secondary",
+      "label" : "Secondary Button",
+      "required" : false,
+      "locked" : false,
+      "children" : [ {
+        "id" : "styles.buttons.secondary.background",
+        "name" : "background",
+        "label" : "Background Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "display_width" : null,
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }, {
+        "id" : "styles.buttons.secondary.text_color",
+        "name" : "text_color",
+        "label" : "Text Color",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "display_width" : null,
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }, {
+        "id" : "styles.buttons.secondary.background_hover",
+        "name" : "background_hover",
+        "label" : "Background Color (Hover)",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "display_width" : null,
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      }, {
+        "id" : "styles.buttons.secondary.text_color_hover",
+        "name" : "text_color_hover",
+        "label" : "Text Color (Hover)",
+        "required" : false,
+        "locked" : false,
+        "type" : "color",
+        "display_width" : null,
+        "default" : {
+          "color" : null,
+          "opacity" : null
+        }
+      } ],
+      "tab" : "STYLE",
+      "expanded" : false,
+      "group_occurrence_meta" : null,
+      "type" : "group",
+      "display_width" : null
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "corner_radius" : 4,
+      "spacing" : 2
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "background" : {
+      "color" : {
+        "color" : null,
+        "opacity" : null
+      },
+      "image" : {
+        "background_position" : "MIDDLE_CENTER",
+        "background_size" : "cover",
+        "src" : "https://www.stephanieogaygarcia.com/hubfs/showcase-theme/pexels-david-bartus-963278_1920x1080px.jpg"
+      }
+    },
+    "size" : { },
+    "content" : {
+      "alignment" : "left",
+      "max_width" : 600
+    },
+    "subheading" : {
+      "text" : {
+        "font" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      }
+    },
+    "heading" : {
+      "text" : {
+        "font" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      }
+    },
+    "supporting_text" : {
+      "text" : {
+        "font" : {
+          "size" : null,
+          "size_unit" : "rem"
+        }
+      }
+    }
+  }
+}, {
+  "id" : "subheading",
+  "name" : "subheading",
+  "label" : "Subheading",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Subheading"
+}, {
+  "id" : "heading",
+  "name" : "heading",
+  "label" : "Heading",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Title of the Page"
+}, {
+  "id" : "supporting_text",
+  "name" : "supporting_text",
+  "label" : "Supporting Text",
+  "required" : false,
+  "locked" : false,
+  "type" : "richtext",
+  "display_width" : null,
+  "default" : "A brief paragraph explaining a little more about this page and what type of content the reader can expect to see.&nbsp;"
+}, {
+  "id" : "ctas",
+  "name" : "ctas",
+  "label" : "CTAs",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : 2,
+    "sorting_label_field" : null,
+    "default" : 1
+  },
+  "children" : [ {
+    "id" : "ctas.link",
+    "name" : "link",
+    "label" : "Link",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "content_id" : null,
+        "type" : "EXTERNAL",
+        "href" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  }, {
+    "id" : "ctas.button_text",
+    "name" : "button_text",
+    "label" : "Button text",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Button text"
+  }, {
+    "id" : "ctas.button_type",
+    "name" : "button_type",
+    "label" : "Button type",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "primary", "Primary" ], [ "secondary", "Secondary" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "primary"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "button_text" : "Button text",
+    "button_type" : "primary"
+  } ]
+} ]

@@ -1,0 +1,469 @@
+[ {
+  "id" : "plans",
+  "name" : "plans",
+  "label" : "Planes de Precio",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : null,
+    "sorting_label_field" : "plans.plan_name",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "plans.status",
+    "name" : "status",
+    "label" : "Estado",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "active", "Activo" ], [ "inactive", "Inactivo" ], [ "coming_soon", "Próximamente" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "active"
+  }, {
+    "id" : "plans.highlight",
+    "name" : "highlight",
+    "label" : "¿Destacar este plan?",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "plans.plan_name",
+    "name" : "plan_name",
+    "label" : "Nombre del Plan",
+    "required" : true,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Plan Básico"
+  }, {
+    "id" : "plans.price",
+    "name" : "price",
+    "label" : "Precio",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "$100"
+  }, {
+    "id" : "plans.frequency",
+    "name" : "frequency",
+    "label" : "Frecuencia",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "/hour", "Hora" ], [ "/month", "Mes" ], [ "/project", "Proyecto" ] ],
+    "multiple" : false,
+    "reordering_enabled" : true,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "/month"
+  }, {
+    "id" : "plans.include_tax",
+    "name" : "include_tax",
+    "label" : "¿Incluir etiqueta de impuestos?",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : false
+  }, {
+    "id" : "plans.tax_label",
+    "name" : "tax_label",
+    "label" : "Etiqueta de Impuestos",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "plans.include_tax",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "+ IVA"
+  }, {
+    "id" : "plans.description",
+    "name" : "description",
+    "label" : "Descripción",
+    "required" : false,
+    "locked" : false,
+    "type" : "richtext",
+    "display_width" : null,
+    "default" : "Perfecto para empezar."
+  }, {
+    "id" : "plans.features",
+    "name" : "features",
+    "label" : "Características",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 0,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : 3
+    },
+    "children" : [ {
+      "id" : "plans.features.text",
+      "name" : "text",
+      "label" : "Texto de Característica",
+      "required" : false,
+      "locked" : false,
+      "allow_new_line" : false,
+      "type" : "text",
+      "display_width" : null,
+      "default" : "Característica"
+    } ],
+    "tab" : "CONTENT",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : [ {
+      "text" : "Característica 1"
+    }, {
+      "text" : "Característica 2"
+    }, {
+      "text" : "Característica 3"
+    } ]
+  }, {
+    "id" : "plans.cta_text",
+    "name" : "cta_text",
+    "label" : "Texto CTA",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Seleccionar Plan"
+  }, {
+    "id" : "plans.cta_link",
+    "name" : "cta_link",
+    "label" : "Enlace CTA",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "https://example.com"
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "status" : "active",
+    "plan_name" : "Básico",
+    "price" : "$0",
+    "features" : [ {
+      "text" : "Característica 1"
+    } ]
+  } ]
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Estilo",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.default",
+    "name" : "default",
+    "label" : "Estilo de Tarjeta (Por Defecto)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.default.bg_color",
+      "name" : "bg_color",
+      "label" : "Color de Fondo",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#1e1e1e",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "style.default.title_font",
+      "name" : "title_font",
+      "label" : "Fuente y Color del Título",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 24,
+        "color" : "#ffffff",
+        "styles" : {
+          "font-weight" : "700"
+        }
+      }
+    }, {
+      "id" : "style.default.price_font",
+      "name" : "price_font",
+      "label" : "Fuente y Color del Precio",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 32,
+        "color" : "#ffffff",
+        "styles" : {
+          "font-weight" : "700"
+        }
+      }
+    }, {
+      "id" : "style.default.description_font",
+      "name" : "description_font",
+      "label" : "Fuente y Color de la Descripción",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 16,
+        "color" : "#cccccc"
+      }
+    }, {
+      "id" : "style.default.feature_font",
+      "name" : "feature_font",
+      "label" : "Fuente y Color de Características",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 16,
+        "color" : "#ffffff"
+      }
+    }, {
+      "id" : "style.default.feature_icon_color",
+      "name" : "feature_icon_color",
+      "label" : "Color del Icono de Característica",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#007bff"
+      }
+    }, {
+      "id" : "style.default.cta_bg_color",
+      "name" : "cta_bg_color",
+      "label" : "Color de Fondo del CTA",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#007bff"
+      }
+    }, {
+      "id" : "style.default.cta_text_font",
+      "name" : "cta_text_font",
+      "label" : "Fuente y Color del Texto CTA",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 16,
+        "color" : "#ffffff",
+        "styles" : {
+          "font-weight" : "600"
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "style.highlight",
+    "name" : "highlight",
+    "label" : "Estilo de Tarjeta (Destacada)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.highlight.bg_color",
+      "name" : "bg_color",
+      "label" : "Color de Fondo",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#1e1e1e",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "style.highlight.border_color",
+      "name" : "border_color",
+      "label" : "Color del Borde/Destacado",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#007bff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "style.highlight.title_font",
+      "name" : "title_font",
+      "label" : "Fuente y Color del Título",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 24,
+        "color" : "#ffffff",
+        "styles" : {
+          "font-weight" : "700"
+        }
+      }
+    }, {
+      "id" : "style.highlight.price_font",
+      "name" : "price_font",
+      "label" : "Fuente y Color del Precio",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 32,
+        "color" : "#ffffff",
+        "styles" : {
+          "font-weight" : "700"
+        }
+      }
+    }, {
+      "id" : "style.highlight.description_font",
+      "name" : "description_font",
+      "label" : "Fuente y Color de la Descripción",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 16,
+        "color" : "#cccccc"
+      }
+    }, {
+      "id" : "style.highlight.feature_font",
+      "name" : "feature_font",
+      "label" : "Fuente y Color de Características",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 16,
+        "color" : "#ffffff"
+      }
+    }, {
+      "id" : "style.highlight.feature_icon_color",
+      "name" : "feature_icon_color",
+      "label" : "Color del Icono de Característica",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#007bff"
+      }
+    }, {
+      "id" : "style.highlight.cta_bg_color",
+      "name" : "cta_bg_color",
+      "label" : "Color de Fondo del CTA",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#007bff"
+      }
+    }, {
+      "id" : "style.highlight.cta_text_font",
+      "name" : "cta_text_font",
+      "label" : "Fuente y Color del Texto CTA",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 16,
+        "color" : "#ffffff",
+        "styles" : {
+          "font-weight" : "600"
+        }
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

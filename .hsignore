@@ -1,0 +1,45 @@
+# Git
+.git/
+.gitignore
+.gitattributes
+.github/
+
+# Node
+node_modules/
+package.json
+package-lock.json
+yarn.lock
+npm-debug.log*
+
+# Docs
+README.md
+CHANGELOG.md
+*.md
+
+# Config
+hubspot.config.yml
+archived.hubspot.config.yml
+.hsaccount
+.env
+.env.local
+
+# IDE
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Build
+dist/
+build/
+tmp/
+temp/
+
+# Testing
+tests/
+test/
+coverage/
+
+# Logs
+logs/
+*.log

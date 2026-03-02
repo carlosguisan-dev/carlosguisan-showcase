@@ -1,0 +1,145 @@
+.services-module {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.services-grid {
+  display: grid;
+  gap: 2rem;
+  width: 100%;
+  justify-content: center;
+}
+
+.service-card {
+  /* Dimensions & Layout */
+  height: 20rem; /* Fixed height for consistency */
+  border-radius: 1rem;
+  padding: 1.5rem;
+  display: flex;
+  align-items: flex-end; /* Push content to bottom */
+  position: relative;
+  overflow: hidden;
+  text-decoration: none;
+  
+  /* Background Image Handling */
+  background-image: linear-gradient(var(--card-overlay), var(--card-overlay)), var(--bg-img);
+  background-size: cover;
+  background-position: center;
+  
+  /* Visuals */
+  box-shadow: 0 0 2rem -1rem rgba(0,0,0,0.5);
+  transition: all 0.5s ease;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 3rem -1rem rgba(0,0,0,0.6);
+}
+
+/* Content Wrapper */
+.service-content {
+  position: relative;
+  z-index: 2; /* Ensure text is above pseudo-element circles */
+  width: 100%;
+}
+
+/* Typography elements set in module.html via vars, but handled here for transitions */
+.service-title {
+  margin: 0;
+  line-height: 1.2;
+  transition: color 0.5s ease;
+}
+
+.service-description {
+  margin-top: 0.5rem;
+  line-height: 1.5;
+  font-size: 0.9rem;
+  font-weight: normal;
+  transition: color 0.5s ease;
+}
+
+/* Icon (Top Right absolute or inline?) CodePen has Date top right. Let's do absolute Top Right */
+.service-icon-wrapper {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  color: var(--icon-color);
+  opacity: 0.8;
+  transition: color 0.5s ease;
+  z-index: 3;
+}
+
+.service-icon-wrapper svg {
+  width: var(--icon-size);
+  height: var(--icon-size);
+  display: block;
+  fill: currentColor;
+}
+
+.service-card:hover .service-icon-wrapper {
+  color: var(--accent-color);
+}
+
+/* The Circular Reveal Magic */
+.service-card:before, .service-card:after {
+  content: '';
+  transform: scale(0);
+  transform-origin: 100% 0%; /* Top Right origin like the icon? Or Center? CodePen: top left. */
+  border-radius: 50%;
+  position: absolute;
+  /* Circle centers at top left (-50% -50%) to expand out. */
+  /* Let's try centering at the mouse position? No, CSS only: fix an origin. */
+  /* CodePen: left: -50%; top: -50%; origin top left. */
+  left: -50%;
+  top: -50%;
+  z-index: 1; /* Below text (z:2) but above bg */
+  transition: all 0.5s ease-in-out;
+  width: 250%; /* Large enough to cover */
+  height: 250%;
+}
+
+/* Customize origin if we want. CodePen is Top Left. 
+   Let's use Top Right if we put the Icon there? 
+   Let's stick to Top Left for now as per CodePen reference.
+*/
+
+/* Background Layers */
+.service-card:before {
+  background: var(--accent-color); /* The accent color layer (middle) */
+  opacity: 0.3; /* Maybe just opacity? In CodePen it's solid grey. */
+  /* Let's make it the Accent Color but lighter? 
+     Or stick to CodePen: :before is grey, :after is white.
+  */
+  background: #f0f0f0; 
+}
+
+.service-card:after {
+  background: var(--card-bg-reveal); /* The main reveal background (White usually) */
+  transition-delay: 0.1s; /* Slight delay for effect */
+  width: 200%;
+  height: 200%;
+}
+
+.service-card:hover:before, .service-card:hover:after {
+  transform: scale(1);
+}
+
+/* Text color changes on hover are handled in module.html inline styles or scoped style block 
+   referencing CSS vars: .service-card:hover .title { color: var(...) }
+*/
+
+/* Tablet Adjustments */
+@media (min-width: 480px) and (max-width: 991px) {
+  .service-card {
+    height: 19rem;
+  }
+}
+
+/* Mobile Adjustments */
+@media (max-width: 479px) {
+  .service-card {
+    height: 18rem;
+  }
+}
+

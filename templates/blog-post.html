@@ -1,0 +1,63 @@
+<!--
+  templateType: blog_post
+  isAvailableForNewContent: true
+  label: Blog | Single
+  screenshotPath: ../images/template-previews/showcase-theme--blog-post.png
+-->
+{% set template_css = "../../css/templates/blog.css" %}
+{% extends "./layouts/base.html" %}
+
+{% block body %}
+<div class="body-container body-container--blog-post">
+
+  {# Blog Post Hero Section #}
+  <section class="blog-hero" style="background-color: {{ theme.global_colors.neutral.color }}; background-image: url({{ content.featured_image }});">
+    <div class="content-wrapper content-wrapper--vertical-spacing">
+      
+      {# Gradient Overlay #}
+      <div class="blog-hero__gradient-overlay"></div>
+      
+      {# Content #}
+      <div class="blog-hero__content">
+        <p class="blog-hero__subheading">
+          {% for tag in content.tag_list %}
+          <a class="blog-hero__tag-link" href="{{ blog_tag_url(group.id, tag.slug) }}" rel="tag">{{ tag.name }}</a>{% if not loop.last %},{% endif %}
+          {% endfor %}
+        </p><br>
+        <h1 class="blog-hero__heading">{{ content.name }}</h1>
+        <div class="blog-hero__supporting-text">
+          <a href="{{ blog_author_url(group.id, content.blog_post_author.slug) }}" rel="author" class="blog-hero__author">{{ content.blog_post_author.display_name }}</a> | <time datetime="{{ content.publish_date }}" class="blog-hero__timestamp">{{ content.publish_date_localized }}</time>
+        </div>
+      </div>
+      
+    </div>
+  </section>
+  {# END Blog Post Hero Section #}
+
+  {# Blog Post Content Section #}
+  <div class="content-wrapper content-wrapper--vertical-spacing">
+    <div class="blog-post__body">
+      {{ content.post_body }}
+    </div>
+  </div>
+  {# END Blog Post Content Section #}
+
+  {# Blog Post Comments Section #}
+  {% if group.allow_comments %}
+  <div class="blog-comments">
+    <div class="content-wrapper content-wrapper--vertical-spacing">
+      {% module "blog_comments_header"
+        path="../modules/blog-post-comments-header--global",
+        label="Blog Comments - Header"
+      %}
+      {% module "blog_comments"
+        path="@hubspot/blog_comments",
+        label="Blog Comments"
+      %}
+    </div>
+  </div>
+  {% endif %} 
+  {# END Blog Post Comments Section #} 
+
+</div>
+{% endblock body %}

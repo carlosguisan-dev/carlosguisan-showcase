@@ -1,0 +1,370 @@
+[ {
+  "id" : "services",
+  "name" : "services",
+  "label" : "Servicios",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : "services.title",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "services.image",
+    "name" : "image",
+    "label" : "Imagen de Fondo",
+    "required" : false,
+    "locked" : false,
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "disabled"
+    }
+  }, {
+    "id" : "services.title",
+    "name" : "title",
+    "label" : "Título",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Nombre del Servicio"
+  }, {
+    "id" : "services.description",
+    "name" : "description",
+    "label" : "Descripción",
+    "required" : false,
+    "locked" : false,
+    "display" : "multi_line",
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Descripción del servicio."
+  }, {
+    "id" : "services.use_link",
+    "name" : "use_link",
+    "label" : "Habilitar Enlace",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "services.link",
+    "name" : "link",
+    "label" : "Enlace",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : null,
+      "controlling_field_path" : "services.use_link",
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "show_advanced_rel_options" : false,
+    "type" : "link",
+    "display_width" : null,
+    "default" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "content_id" : null,
+        "href" : "",
+        "href_with_scheme" : ""
+      },
+      "open_in_new_tab" : false,
+      "no_follow" : false,
+      "sponsored" : false,
+      "user_generated_content" : false
+    }
+  }, {
+    "id" : "services.icon",
+    "name" : "icon",
+    "label" : "Icono (Opcional)",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.0.10",
+    "type" : "icon",
+    "display_width" : null,
+    "default" : {
+      "name" : "briefcase",
+      "type" : "SOLID"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "title" : "Diseño Web",
+    "description" : "Creamos experiencias digitales únicas.",
+    "image" : {
+      "src" : "https://codetheweb.blog/assets/img/posts/html-syntax/cover.jpg",
+      "alt" : "Diseño Web"
+    },
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "#"
+      }
+    },
+    "icon" : {
+      "name" : "desktop",
+      "type" : "SOLID"
+    }
+  }, {
+    "title" : "Desarrollo",
+    "description" : "Código limpio y optimizado.",
+    "image" : {
+      "src" : "https://codetheweb.blog/assets/img/posts/basic-types-of-html-tags/cover.jpg",
+      "alt" : "Desarrollo"
+    },
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "#"
+      }
+    },
+    "icon" : {
+      "name" : "code",
+      "type" : "SOLID"
+    }
+  }, {
+    "title" : "Marketing",
+    "description" : "Estrategias que convierten.",
+    "image" : {
+      "src" : "https://codetheweb.blog/assets/img/posts/links-images-about-file-paths/cover.jpg",
+      "alt" : "Marketing"
+    },
+    "link" : {
+      "url" : {
+        "type" : "EXTERNAL",
+        "href" : "#"
+      }
+    },
+    "icon" : {
+      "name" : "bullhorn",
+      "type" : "SOLID"
+    }
+  } ]
+}, {
+  "id" : "style",
+  "name" : "style",
+  "label" : "Estilos",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "style.layout",
+    "name" : "layout",
+    "label" : "Diseño",
+    "inline_help_text" : "Controla la cantidad de columnas.",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.layout.desktop_columns",
+      "name" : "desktop_columns",
+      "label" : "Columnas en Escritorio",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "1", "1" ], [ "2", "2" ], [ "3", "3" ], [ "4", "4" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "3"
+    }, {
+      "id" : "style.layout.tablet_columns",
+      "name" : "tablet_columns",
+      "label" : "Columnas en Tablet",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "1", "1" ], [ "2", "2" ], [ "3", "3" ], [ "4", "4" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "2"
+    }, {
+      "id" : "style.layout.mobile_columns",
+      "name" : "mobile_columns",
+      "label" : "Columnas en Móvil",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "1", "1" ], [ "2", "2" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "1"
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "style.icon_style",
+    "name" : "icon_style",
+    "label" : "Icono",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.icon_style.color",
+      "name" : "color",
+      "label" : "Color",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#FFFFFF"
+      }
+    }, {
+      "id" : "style.icon_style.width",
+      "name" : "width",
+      "label" : "Tamaño (px)",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 24
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "style.typography",
+    "name" : "typography",
+    "label" : "Texto",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.typography.title_font",
+      "name" : "title_font",
+      "label" : "Fuente del Título",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 24,
+        "size_unit" : "px",
+        "styles" : {
+          "font-weight" : "700"
+        }
+      }
+    }, {
+      "id" : "style.typography.description_font",
+      "name" : "description_font",
+      "label" : "Fuente de Descripción",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Open Sans",
+        "font_set" : "GOOGLE",
+        "size" : 14,
+        "size_unit" : "px",
+        "styles" : { }
+      }
+    }, {
+      "id" : "style.typography.text_color_hover",
+      "name" : "text_color_hover",
+      "label" : "Color de Texto (Hover)",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#3c3163"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "style.card_style",
+    "name" : "card_style",
+    "label" : "Tarjeta",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "style.card_style.accent_color",
+      "name" : "accent_color",
+      "label" : "Color de Acento",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#3c3163"
+      }
+    }, {
+      "id" : "style.card_style.overlay_color",
+      "name" : "overlay_color",
+      "label" : "Color de Superposición",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#000000",
+        "opacity" : 50
+      }
+    }, {
+      "id" : "style.card_style.card_bg_reveal",
+      "name" : "card_bg_reveal",
+      "label" : "Fondo Revelado",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#FFFFFF"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

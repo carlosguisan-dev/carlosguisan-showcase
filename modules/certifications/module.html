@@ -1,0 +1,135 @@
+<!--
+  templateType: "none"
+  isAvailableForNewContent: false
+-->
+{% module "certifications" 
+  path="@hubspot/certifications",
+  label="Certificaciones HubSpot Academy",
+  fields={
+    "section_title": {
+      "type": "text",
+      "label": "Título de la Sección",
+      "default": "Certificaciones HubSpot Academy"
+    },
+    "section_intro": {
+      "type": "text",
+      "label": "Texto Introductorio",
+      "default": "Formación oficial que valida mi expertise técnico en la plataforma HubSpot"
+    },
+    "certifications": {
+      "type": "group",
+      "label": "Certificaciones",
+      "fields": {
+        "cert_title": {
+          "type": "text",
+          "label": "Título de la Certificación",
+          "default": "CMS for Developers"
+        },
+        "cert_issuer": {
+          "type": "text",
+          "label": "Emisor",
+          "default": "HubSpot Academy"
+        },
+        "cert_icon": {
+          "type": "text",
+          "label": "Ícono (emoji)",
+          "default": "🎓"
+        },
+        "cert_embed_code": {
+          "type": "textarea",
+          "label": "Código Embed de HubSpot Academy (opcional)",
+          "help_text": "Pega aquí el código embed que proporciona HubSpot Academy para mostrar el badge oficial"
+        },
+        "cert_url": {
+          "type": "url",
+          "label": "URL de la Certificación (opcional)",
+          "help_text": "Enlace directo a la certificación en HubSpot Academy"
+        }
+      }
+    },
+    "additional_cert": {
+      "type": "group",
+      "label": "Certificación Adicional",
+      "fields": {
+        "show_additional": {
+          "type": "boolean",
+          "label": "Mostrar Certificación Adicional",
+          "default": true
+        },
+        "additional_text": {
+          "type": "text",
+          "label": "Texto de Certificación Adicional",
+          "default": "🌍 Contribuidor Oficial Traducción WordPress Costa Rica"
+        }
+      }
+    },
+    "styling": {
+      "type": "group",
+      "label": "Estilos",
+      "fields": {
+        "background_color": {
+          "type": "color",
+          "label": "Color de Fondo",
+          "default": "#f5f5f5"
+        },
+        "text_color": {
+          "type": "color",
+          "label": "Color del Texto",
+          "default": "#333333"
+        },
+        "accent_color": {
+          "type": "color",
+          "label": "Color de Acento",
+          "default": "#a3d977"
+        }
+      }
+    }
+  }
+%}
+
+<section class="certifications-section" style="background-color: {{ module.styling.background_color }}; color: {{ module.styling.text_color }};">
+  <div class="container">
+    
+    {% if module.section_title %}
+      <h2 class="section-title">{{ module.section_title }}</h2>
+    {% endif %}
+    
+    {% if module.section_intro %}
+      <p class="section-intro">{{ module.section_intro }}</p>
+    {% endif %}
+    
+    <div class="certs-grid">
+      {% for cert in module.certifications %}
+        <div class="cert-card">
+          {% if cert.cert_embed_code %}
+            <!-- Badge oficial de HubSpot Academy -->
+            <div class="cert-badge embed-badge">
+              {{ cert.cert_embed_code }}
+            </div>
+          {% else %}
+            <!-- Badge temporal con ícono -->
+            <div class="cert-badge">
+              <span class="badge-icon">{{ cert.cert_icon }}</span>
+            </div>
+          {% endif %}
+          
+          <h4>{{ cert.cert_title }}</h4>
+          <p>{{ cert.cert_issuer }}</p>
+          
+          {% if cert.cert_url %}
+            <a href="{{ cert.cert_url }}" class="cert-link" target="_blank" rel="noopener">
+              Ver Certificación
+            </a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+    
+    {% if module.additional_cert.show_additional and module.additional_cert.additional_text %}
+      <div class="additional-cert">
+        <p>{{ module.additional_cert.additional_text }}</p>
+      </div>
+    {% endif %}
+    
+  </div>
+</section>

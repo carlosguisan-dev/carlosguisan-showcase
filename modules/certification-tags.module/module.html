@@ -1,0 +1,84 @@
+{% set instance_id = name %}
+
+{% require_css %}
+<style>
+  #{{ instance_id }} {
+    --bg-color: {{ module.styles.global.bg_color.color|default('#ffffff') }};
+    --padding-v: {{ module.styles.global.padding_v|default(60) }}px;
+    
+    --title-font: {{ module.styles.header.title_font.style }};
+    --title-color: {{ module.styles.header.title_font.color|default('#1a2e05') }};
+    
+    --tag-size: {{ module.styles.tag.tag_font.size }}px;
+    --tag-family: {{ module.styles.tag.tag_font.font }};
+    --tag-weight: {{ module.styles.tag.tag_font.variant|regex_replace('[^0-9]', '')|default(600) }};
+    --tag-color: {{ module.styles.tag.tag_font.color|default('#1a2e05') }};
+    --tag-bg: rgba({{ module.styles.tag.tag_bg.color|default('#ffffff')|convert_rgb }}, {{ (module.styles.tag.tag_bg.opacity|default(100)) / 100 }});
+    --tag-radius: {{ module.styles.tag.tag_radius|default(100) }}px;
+    --tag-border-w: {{ module.styles.tag.tag_border_width|default(1) }}px;
+    
+    --grid-gap: {{ module.styles.layout.gap|default(12) }}px;
+    --cloud-align: {{ module.styles.layout.alignment|default('center') }};
+  }
+
+  #{{ instance_id }} .cert-tags-section {
+    background-color: var(--bg-color);
+    padding: var(--padding-v) 0;
+  }
+
+  #{{ instance_id }} .cert-tags-title {
+    {{ module.styles.header.title_font.style }};
+    color: var(--title-color);
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+
+  #{{ instance_id }} .tags-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--grid-gap);
+    justify-content: var(--cloud-align);
+  }
+
+  #{{ instance_id }} .cert-tag {
+    flex: 0 1 auto; /* Grow: 0, Shrink: 1, Basis: auto */
+  }
+
+  {% for cert in module.certifications %}
+    #{{ instance_id }} .cert-tag--{{ loop.index }} {
+      --accent: {{ cert.accent_color.color|default('#ff7a59') }};
+      --accent-text: {{ cert.accent_text_color.color|default('#ffffff') }};
+    }
+  {% endfor %}
+</style>
+{% end_require_css %}
+
+<section id="{{ instance_id }}" class="cert-tags-section">
+  <div class="container">
+    {% if module.config.show_header and module.config.section_title %}
+      <h2 class="cert-tags-title">{{ module.config.section_title }}</h2>
+    {% endif %}
+
+    <div class="tags-cloud">
+      {% for cert in module.certifications %}
+        <a href="{{ cert.url.href|default('#') }}" 
+           class="cert-tag cert-tag--{{ loop.index }}" 
+           target="_blank" 
+           rel="noopener noreferrer">
+          <span class="tag-icon">
+            {% if cert.icon.name %}
+              {% icon
+                name="{{ cert.icon.name }}",
+                style="{{ cert.icon.type }}",
+                unicode="{{ cert.icon.unicode }}",
+                icon_set="{{ cert.icon.icon_set }}"
+              %}
+            {% endif %}
+          </span>
+          <span class="tag-name">{{ cert.cert_name }}</span>
+          <span class="tag-arrow"><i class="fas fa-arrow-right"></i></span>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

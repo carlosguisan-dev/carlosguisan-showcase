@@ -1,0 +1,21 @@
+name: Deploy to HubSpot
+
+on:
+  push:
+    branches:
+      - master # Cambiado de main a master basándose en el repositorio actual
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to HubSpot
+        uses: hubspot/cms-deploy-action@v1
+        with:
+          portal_id: ${{ secrets.HUBSPOT_PORTAL_ID }}
+          personal_access_key: ${{ secrets.HUBSPOT_ACCESS_TOKEN }}
+          src: "."
+          dest: "Carlosguisan Showcase"

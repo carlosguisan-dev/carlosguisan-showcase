@@ -1,0 +1,24 @@
+{
+  "label" : "Carlosguisan Showcase",
+  "preview_path" : "./templates/home.html",
+  "screenshot_path" : "./images/template-previews/showcase-theme--home.png",
+  "enable_domain_stylesheets" : false,
+  "is_available_for_new_content" : true,
+  "extends" : "@marketplace/Stephanie_O_Gay_Garcia/Showcase",
+  "responsive_breakpoints" : [ {
+    "mediaQuery" : "@media (max-width: 767px)",
+    "messages" : { },
+    "name" : "mobile",
+    "previewWidth" : {
+      "units" : "px",
+      "value" : 477
+    }
+  } ],
+  "version" : "2",
+  "author" : {
+    "name" : "Carlos Guillermo Sanchez Cabezas",
+    "email" : "carlosguisan@gmail.com"
+  },
+  "license" : "./license.txt",
+  "hide_all_default_modules" : false
+}

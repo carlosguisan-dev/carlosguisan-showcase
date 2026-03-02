@@ -1,0 +1,58 @@
+{% require_css %}
+  <style>
+    {% scope_css %}
+      .process-indicator {
+        background-color: {{ module.style.colors.indicator_bg_color.color }};
+        color: {{ module.style.colors.indicator_text_color.color }};
+        {{ module.style.typography.indicator_font.css }}
+      }
+      .process-indicator svg {
+        fill: {{ module.style.colors.indicator_text_color.color }};
+      }
+      .step-title {
+        color: {{ module.style.colors.title_color.color }};
+        {{ module.style.typography.title_font.css }}
+      }
+      .step-description {
+        color: {{ module.style.colors.description_color.color }};
+        {{ module.style.typography.description_font.css }}
+      }
+      .freelance-process-steps {
+        counter-reset: step-counter;
+      }
+      .step-number {
+        counter-increment: step-counter;
+        color: {{ module.style.colors.indicator_text_color.color }};  
+      }
+      .step-number::before {
+        content: counter(step-counter, {{ module.style.numbering_style|default('decimal') }});
+      }
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}
+<div class="freelance-process-module" id="{{ name }}">
+  <div class="freelance-process-steps">
+    {% for step in module.steps %}
+      <div class="process-step">
+        <div class="process-indicator">
+          {% if step.type_selector == "icon" %}
+            {% icon
+              name="{{ step.icon.name }}",
+              style="{{ step.icon.type }}",
+              unicode="{{ step.icon.unicode }}",
+              icon_set="{{ step.icon.icon_set }}"
+            %}
+          {% else %}
+            <span class="step-number"></span>
+          {% endif %}
+        </div>
+        <div class="process-content">
+          <h3 class="step-title">{{ step.step_name }}</h3>
+          <div class="step-description">
+            {{ step.step_description }}
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

@@ -1,0 +1,90 @@
+[ {
+  "id" : "code_content",
+  "name" : "code_content",
+  "label" : "Código",
+  "help_text" : "Pega tu código aquí",
+  "required" : true,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "function ejemplo() {\n  console.log('Hola mundo');\n}"
+}, {
+  "id" : "language",
+  "name" : "language",
+  "label" : "Lenguaje",
+  "required" : true,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "html", "HTML" ], [ "css", "CSS" ], [ "javascript", "JavaScript" ], [ "js", "JavaScript" ], [ "hubl", "HubL" ], [ "php", "PHP" ], [ "python", "Python" ], [ "json", "JSON" ], [ "bash", "Bash/Shell" ], [ "sql", "SQL" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "hubl"
+}, {
+  "id" : "show_header",
+  "name" : "show_header",
+  "label" : "Mostrar header",
+  "help_text" : "Mostrar barra superior con título y botón de copiar",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "code_title",
+  "name" : "code_title",
+  "label" : "Título del código",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "show_header",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "true",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : ""
+}, {
+  "id" : "show_line_numbers",
+  "name" : "show_line_numbers",
+  "label" : "Mostrar números de línea",
+  "required" : false,
+  "locked" : false,
+  "display" : "checkbox",
+  "type" : "boolean",
+  "display_width" : null,
+  "default" : true
+}, {
+  "id" : "theme",
+  "name" : "theme",
+  "label" : "Tema de colores",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "dark", "Oscuro (VS Code)" ], [ "light", "Claro (GitHub)" ] ],
+  "multiple" : false,
+  "reordering_enabled" : true,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "dark"
+}, {
+  "id" : "max_height",
+  "name" : "max_height",
+  "label" : "Altura máxima (px)",
+  "help_text" : "Deja vacío para altura automática. Útil para código muy largo.",
+  "required" : false,
+  "locked" : false,
+  "display" : "text",
+  "step" : 1,
+  "type" : "number",
+  "display_width" : null
+} ]

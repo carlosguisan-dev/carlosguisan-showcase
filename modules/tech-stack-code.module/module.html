@@ -1,0 +1,33 @@
+<div class="tech-stack-wrapper">
+  {% if module.module_title or module.theme_settings.show_dots %}
+    <div class="tech-stack-header">
+      <div class="header-left">
+        {% if module.theme_settings.show_dots %}
+          <div class="header-dots">
+            <span class="dot dot-close"></span>
+            <span class="dot dot-minimize"></span>
+            <span class="dot dot-expand"></span>
+          </div>
+        {% endif %}
+        {% if module.module_title %}
+          <span class="header-title">{{ module.module_title }}</span>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  <div class="tech-stack-content">
+    <div class="code-line"><span class="hl-delimiter">{% raw %}{%{% endraw %}</span> <span class="hl-keyword">set</span> <span class="hl-variable">tech_stack</span> = {</div>
+    <div class="code-line indent-1"><span class="hl-key">"name"</span>: <span class="hl-string">"{{ module.developer_name }}"</span>,</div>
+    <div class="code-line indent-1"><span class="hl-key">"role"</span>: <span class="hl-string">"{{ module.role }}"</span>,</div>
+    <div class="code-line indent-1"><span class="hl-key">"skills"</span>: {</div>
+    {% for category in module.categories %}
+      <div class="code-line indent-2"><span class="hl-key">"{{ category.category_name }}"</span>: [</div>
+      {% for skill in category.skills %}
+        <div class="code-line indent-3"><span class="hl-string">"{{ skill }}"</span>{{ "," if not loop.last }}</div>
+      {% endfor %}
+      <div class="code-line indent-2">]{{ "," if not loop.last }}</div>
+    {% endfor %}
+    <div class="code-line indent-1">}</div>
+    <div class="code-line">} <span class="hl-delimiter">{% raw %}%}{% endraw %}</span></div>
+  </div>
+</div>

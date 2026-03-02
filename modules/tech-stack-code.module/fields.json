@@ -1,0 +1,104 @@
+[ {
+  "id" : "developer_name",
+  "name" : "developer_name",
+  "label" : "Nombre del Desarrollador",
+  "required" : true,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Carlos Guisán"
+}, {
+  "id" : "role",
+  "name" : "role",
+  "label" : "Rol / Título",
+  "required" : true,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Full Stack Developer"
+}, {
+  "id" : "categories",
+  "name" : "categories",
+  "label" : "Categorías de Tech Stack",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 1,
+    "max" : null,
+    "sorting_label_field" : null,
+    "default" : 2
+  },
+  "children" : [ {
+    "id" : "category_name",
+    "name" : "category_name",
+    "label" : "Nombre de la Categoría",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "frontend"
+  }, {
+    "id" : "skills",
+    "name" : "skills",
+    "label" : "Skills",
+    "required" : false,
+    "locked" : false,
+    "occurrence" : {
+      "min" : 1,
+      "max" : null,
+      "sorting_label_field" : null,
+      "default" : 3
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : [ "React", "Next.js", "TypeScript" ]
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ {
+    "category_name" : "frontend",
+    "skills" : [ "React", "Next.js", "TypeScript" ]
+  }, {
+    "category_name" : "backend",
+    "skills" : [ "Node.js", "Express", "PostgreSQL" ]
+  } ]
+}, {
+  "id" : "module_title",
+  "name" : "module_title",
+  "label" : "Título de la ventana",
+  "required" : false,
+  "locked" : false,
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "TechStack.hubl"
+}, {
+  "id" : "theme_settings",
+  "name" : "theme_settings",
+  "label" : "Opciones Visuales",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "show_dots",
+    "name" : "show_dots",
+    "label" : "Mostrar botones de ventana (dots)",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

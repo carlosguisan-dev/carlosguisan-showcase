@@ -1,0 +1,145 @@
+{% require_css %}
+  <style>
+    #blog-filter-{{name}} {
+      --filter-bg: {{ module.styling.background_color }};
+      --filter-text: {{ module.styling.text_color }};
+      --filter-border: {{ module.styling.border_color }};
+      --filter-accent: {{ module.styling.accent_color }};
+      --filter-accent-hover: {{ module.styling.accent_hover_color }};
+    }
+  </style>
+{% end_require_css %}
+
+<section class="blog-filter-section" id="blog-filter-{{name}}" data-filter-style="{{ module.filter_style }}">
+  
+  {% if module.filter_style == "search_select" %}
+    {# Estilo 1: Búsqueda + Select #}
+    <div class="blog-filter-search-select">
+      <div class="filter-search-wrapper">
+        <input 
+          type="text" 
+          id="blog-search-{{name}}" 
+          class="blog-filter-search" 
+          placeholder="{{ module.search_placeholder|default('Buscar posts...') }}"
+          aria-label="Buscar posts del blog"
+        />
+        <span class="search-icon" aria-hidden="true">🔍</span>
+      </div>
+      
+      <div class="filter-select-wrapper">
+        <label for="blog-select-{{name}}" class="filter-select-label">
+          {{ module.select_label|default('Filtrar por categoría') }}
+        </label>
+        <select 
+          id="blog-select-{{name}}" 
+          class="blog-filter-select"
+          aria-label="Filtrar posts por categoría"
+          data-blog-listing-url="{{ group.absolute_url }}"
+        >
+          <option value="">{{ module.select_default_option|default('Todas las categorías') }}</option>
+          {# Las opciones se llenarán dinámicamente con JavaScript #}
+        </select>
+      </div>
+    </div>
+    
+  {% elif module.filter_style == "carousel" %}
+    {# Estilo 2: Carousel de Tags #}
+    <div class="blog-filter-carousel-wrapper">
+      <div class="blog-filter-carousel" 
+           data-items-desktop="{{ module.styling.carousel_settings.items_per_view_desktop|default(4) }}"
+           data-items-tablet="{{ module.styling.carousel_settings.items_per_view_tablet|default(3) }}"
+           data-items-mobile="{{ module.styling.carousel_settings.items_per_view_mobile|default(2) }}"
+           data-auto-play="{{ module.styling.carousel_settings.auto_play|default(false)|lower }}"
+           data-auto-play-interval="{{ module.styling.carousel_settings.auto_play_interval|default(3000) }}">
+        
+        {% if module.styling.carousel_settings.show_navigation_arrows|default(true) %}
+          <button class="carousel-nav carousel-nav-prev" aria-label="Tag anterior">
+            <span aria-hidden="true">‹</span>
+          </button>
+        {% endif %}
+        
+        <div class="carousel-track">
+          <a href="{{ group.absolute_url }}" class="carousel-item carousel-item-all" data-tag-slug="" data-tag-name="Todos">
+            <div class="tag-card">
+              <div class="tag-icon">
+                <span class="tag-icon-emoji">📚</span>
+              </div>
+              <div class="tag-content">
+                <h3 class="tag-name">Todos los posts</h3>
+                <p class="tag-description">Ver todas las publicaciones</p>
+              </div>
+            </div>
+          </a>
+          
+          {% for tag in module.tags %}
+            {% if tag.blog_tag %}
+              {% set tag_posts = blog_recent_tag_posts(group.id, tag.blog_tag.slug, 1) %}
+              {% set has_posts = tag_posts|length > 0 %}
+              
+              {% if has_posts %}
+                <a href="{{ blog_tag_url(group.id, tag.blog_tag.slug) }}" 
+                   class="carousel-item" 
+                   data-tag-slug="{{ tag.blog_tag.slug }}" 
+                   data-tag-name="{{ tag.blog_tag.name }}"
+                   data-tag-id="{{ tag.blog_tag.id }}">
+              {% else %}
+                <div class="carousel-item carousel-item-disabled" 
+                     data-tag-slug="{{ tag.blog_tag.slug }}" 
+                     data-tag-name="{{ tag.blog_tag.name }}"
+                     data-tag-id="{{ tag.blog_tag.id }}"
+                     title="Este tag no tiene posts publicados">
+              {% endif %}
+                <div class="tag-card">
+                  <div class="tag-icon">
+                    {% if tag.tag_icon_type == "emoji" and tag.tag_icon_emoji %}
+                      <span class="tag-icon-emoji">{{ tag.tag_icon_emoji }}</span>
+                    {% elif tag.tag_icon_type == "fontawesome" and tag.tag_icon_fontawesome %}
+                      <span class="tag-icon-fontawesome">
+                        {% icon 
+                          name="{{ tag.tag_icon_fontawesome.name }}" 
+                          style="{{ tag.tag_icon_fontawesome.type }}" 
+                          unicode="{{ tag.tag_icon_fontawesome.unicode }}" 
+                          icon_set="{{ tag.tag_icon_fontawesome.icon_set }}" 
+                          purpose="decorative" 
+                          title="{{ tag.blog_tag.name }}" 
+                          no_wrapper="true" 
+                        %}
+                      </span>
+                    {% elif tag.tag_icon_type == "image" and tag.tag_icon_image.src %}
+                      <img 
+                        src="{{ tag.tag_icon_image.src }}" 
+                        alt="{{ tag.blog_tag.name }}" 
+                        class="tag-icon-image" 
+                      />
+                    {% else %}
+                      <span class="tag-icon-emoji">📝</span>
+                    {% endif %}
+                  </div>
+                  <div class="tag-content">
+                    <h3 class="tag-name">{{ tag.blog_tag.name }}</h3>
+                    {% if tag.tag_description %}
+                      <p class="tag-description">{{ tag.tag_description }}</p>
+                    {% endif %}
+                  </div>
+                </div>
+              {% if has_posts %}
+                </a>
+              {% else %}
+                </div>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+        
+        {% if module.styling.carousel_settings.show_navigation_arrows|default(true) %}
+          <button class="carousel-nav carousel-nav-next" aria-label="Siguiente tag">
+            <span aria-hidden="true">›</span>
+          </button>
+        {% endif %}
+      </div>
+      
+      <div class="carousel-indicators" aria-label="Indicadores del carousel"></div>
+    </div>
+  {% endif %}
+  
+</section>

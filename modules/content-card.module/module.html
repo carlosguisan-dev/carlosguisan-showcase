@@ -1,0 +1,39 @@
+{% require_css %}
+  <style>
+    #content-cards-section-{{name}}{
+      --icon-color: {{ module.styling.icon_color }};
+    }
+  </style>
+{% end_require_css %}
+<section class="content-cards-section" id="content-cards-section-{{name}}">
+  <div class="content-cards-grid" data-columns-desktop="{{ module.styling.columns_desktop }}" data-columns-mobile="{{ module.styling.columns_mobile }}">
+    {% for item in module.content_items %}
+      <div class="content-card" style="background-color: {{ module.styling.background_color }}; border-color: {{ module.styling.border_color }}; text-align: {{ module.styling.alignment }};">
+        
+        <div class="content-card-icon">
+          {% if item.icon_type == "emoji" and item.icon_emoji %}
+            <span class="icon-emoji">{{ item.icon_emoji }}</span>
+          {% elif item.icon_type == "fontawesome" and item.icon_fontawesome %}
+            <span class="icon-fontawesome" style="{% if item.icon_width %}width: {{ item.icon_width }}px; height: {{ item.icon_height }}px; font-size: {{ item.icon_width }}px;{% endif %}">
+              {% icon name="{{ item.icon_fontawesome.name }}" style="{{ item.icon_fontawesome.type }}" unicode="{{ item.icon_fontawesome.unicode }}" icon_set="{{ item.icon_fontawesome.icon_set }}" purpose="decorative" title="{{ item.icon_fontawesome.name }}" no_wrapper="true" %}
+            </span>
+          {% elif item.icon_type == "image" and item.icon_image.src %}
+            <img src="{{ item.icon_image.src }}" alt="{{ item.icon_image.alt }}" class="icon-image" />
+          {% endif %}
+        </div>
+        
+        {% if item.heading %}
+          <h3 class="content-card-heading" style="color: {{ module.styling.heading_color }};">{{ item.heading }}</h3>
+        {% endif %}
+        
+        {% if item.description %}
+          <div class="content-card-description" style="color: {{ module.styling.description_color }};">
+            {{ item.description }}
+          </div>
+        {% endif %}
+        
+      </div>
+    {% endfor %}
+  </div>
+</section>
+

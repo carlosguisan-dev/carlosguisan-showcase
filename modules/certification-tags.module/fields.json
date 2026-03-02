@@ -1,0 +1,290 @@
+[ {
+  "id" : "config",
+  "name" : "config",
+  "label" : "Configuración del Módulo",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "show_header",
+    "name" : "show_header",
+    "label" : "Mostrar Título de Sección",
+    "required" : false,
+    "locked" : false,
+    "display" : "checkbox",
+    "type" : "boolean",
+    "display_width" : null,
+    "default" : true
+  }, {
+    "id" : "section_title",
+    "name" : "section_title",
+    "label" : "Título de la Sección",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "config.show_header",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "true",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Mis Certificaciones"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "certifications",
+  "name" : "certifications",
+  "label" : "Certificaciones",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : null,
+    "sorting_label_field" : "cert_name",
+    "default" : 3
+  },
+  "children" : [ {
+    "id" : "cert_name",
+    "name" : "cert_name",
+    "label" : "Nombre de la Certificación",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "HubSpot CMS for Developers"
+  }, {
+    "id" : "icon",
+    "name" : "icon",
+    "label" : "Ícono",
+    "required" : false,
+    "locked" : false,
+    "icon_set" : "fontawesome-5.14.0",
+    "type" : "icon",
+    "display_width" : null,
+    "default" : {
+      "name" : null,
+      "unicode" : null,
+      "type" : "REGULAR"
+    }
+  }, {
+    "id" : "url",
+    "name" : "url",
+    "label" : "URL de la Certificación",
+    "required" : false,
+    "locked" : false,
+    "supported_types" : [ "EXTERNAL", "CONTENT", "FILE", "EMAIL_ADDRESS", "BLOG" ],
+    "type" : "url",
+    "display_width" : null,
+    "default" : {
+      "type" : "EXTERNAL",
+      "href" : "https://academy.hubspot.es/"
+    }
+  }, {
+    "id" : "accent_color",
+    "name" : "accent_color",
+    "label" : "Color Principal",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ff7a59"
+    }
+  }, {
+    "id" : "accent_text_color",
+    "name" : "accent_text_color",
+    "label" : "Color de Texto (Hover)",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : {
+      "color" : "#ffffff"
+    }
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+}, {
+  "id" : "styles",
+  "name" : "styles",
+  "label" : "Personalización de Estilos",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "global",
+    "name" : "global",
+    "label" : "1. Estilos Globales",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "bg_color",
+      "name" : "bg_color",
+      "label" : "Color de Fondo de Sección",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#ffffff"
+      }
+    }, {
+      "id" : "padding_v",
+      "name" : "padding_v",
+      "label" : "Padding Vertical (px)",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 60
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "header",
+    "name" : "header",
+    "label" : "2. Estilos del Título",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "title_font",
+      "name" : "title_font",
+      "label" : "Fuente del Título",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Work Sans",
+        "font_set" : "GOOGLE",
+        "size" : 32,
+        "color" : "#1a2e05"
+      }
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "tag",
+    "name" : "tag",
+    "label" : "3. Estilos de Tags",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "tag_font",
+      "name" : "tag_font",
+      "label" : "Fuente del Tag",
+      "required" : false,
+      "locked" : false,
+      "load_external_fonts" : true,
+      "type" : "font",
+      "display_width" : null,
+      "default" : {
+        "font" : "Inter",
+        "font_set" : "GOOGLE",
+        "size" : 15,
+        "color" : "#1a2e05",
+        "variant" : "600"
+      }
+    }, {
+      "id" : "tag_bg",
+      "name" : "tag_bg",
+      "label" : "Fondo del Tag (Opacity low)",
+      "required" : false,
+      "locked" : false,
+      "type" : "color",
+      "display_width" : null,
+      "default" : {
+        "color" : "#ffffff",
+        "opacity" : 100
+      }
+    }, {
+      "id" : "tag_radius",
+      "name" : "tag_radius",
+      "label" : "Borde Redondeado (px)",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 100
+    }, {
+      "id" : "tag_border_width",
+      "name" : "tag_border_width",
+      "label" : "Ancho del Borde (px)",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 1
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  }, {
+    "id" : "layout",
+    "name" : "layout",
+    "label" : "4. Configuración de la Nube (Layout)",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "alignment",
+      "name" : "alignment",
+      "label" : "Alineación de la Nube",
+      "required" : false,
+      "locked" : false,
+      "display" : "select",
+      "choices" : [ [ "flex-start", "Izquierda" ], [ "center", "Centro" ], [ "flex-end", "Derecha" ] ],
+      "multiple" : false,
+      "reordering_enabled" : true,
+      "preset" : null,
+      "type" : "choice",
+      "display_width" : null,
+      "default" : "center"
+    }, {
+      "id" : "gap",
+      "name" : "gap",
+      "label" : "Espaciado entre Tags (px)",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 12
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null
+} ]

@@ -1,0 +1,295 @@
+/* ========================================
+   MÓDULO DE CERTIFICACIONES - MODERN DESIGN
+   ======================================== */
+
+.certifications-section {
+  overflow: hidden;
+}
+
+.certifications-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* Título y texto introductorio */
+.section-title {
+  margin-bottom: 1.5rem;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.section-intro {
+  text-align: center;
+  margin-bottom: 4rem;
+  line-height: 1.6;
+}
+
+/* Grid de certificaciones */
+.certs-container {
+  padding: 1rem 1rem 4rem; /* Spacing for swiper bits */
+  margin: -1rem;
+}
+
+.certs-grid {
+  display: grid;
+  gap: 2.5rem;
+  margin-bottom: 4rem;
+}
+
+/* Cards de certificación */
+.cert-card {
+  --grad: #f97316, #ea580c; /* Fallback */
+  border-radius: 2.5rem;
+  padding: 2.5rem;
+  display: grid;
+  grid-template: 
+    'title icon' auto
+    'content content' 1fr
+    'bar bar' 4px / 1fr auto;
+  gap: 1.5rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  height: 100%;
+}
+
+.swiper-slide {
+  height: auto; /* Swiper handles the slide height */
+}
+
+.certs-swiper .swiper-button-next,
+.certs-swiper .swiper-button-prev {
+  display: none; /* Hide by default on mobile */
+}
+
+@media (min-width: 1024px) {
+  .certs-swiper .swiper-button-next,
+  .certs-swiper .swiper-button-prev {
+    display: flex;
+  }
+}
+
+/* Neumorphic Variety */
+.cert-card--neumorphic {
+  background-image: linear-gradient(135deg, #ffffff, #f0f4f8);
+  box-shadow: 
+    inset -4px 4px 8px rgba(255, 255, 255, 0.8),
+    inset 4px -4px 8px rgba(166, 180, 200, 0.2),
+    -15px 15px 30px rgba(0, 0, 0, 0.08);
+}
+
+.cert-card--neumorphic:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    inset -4px 4px 8px rgba(255, 255, 255, 0.9),
+    -25px 25px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Glassmorphism Variety */
+.cert-card--glass {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.cert-card--glass:hover {
+  background: rgba(255, 255, 255, 0.5);
+  transform: translateY(-8px);
+}
+
+/* Solid Variety */
+.cert-card--solid {
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.cert-card--solid:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Áreas del Grid */
+.cert-title-area { grid-area: title; }
+.cert-icon-area { grid-area: icon; align-self: start; }
+.cert-content-area { grid-area: content; }
+.cert-bar-area { 
+  grid-area: bar; 
+  height: 4px;
+  border-radius: 2px;
+  background-image: linear-gradient(90deg, var(--grad));
+  opacity: 0.6;
+  transition: opacity 0.3s ease;
+}
+
+.cert-card:hover .cert-bar-area {
+  opacity: 1;
+}
+
+/* Tipografía en Card */
+.cert-card h4 {
+  margin: 0;
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.cert-card p.issuer {
+  margin-bottom: 2rem;
+  line-height: 1.5;
+}
+
+/* Iconos y Badges */
+.cert-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--icon-size, 50px);
+  height: var(--icon-size, 50px);
+}
+
+.icon-badge svg {
+  width: 100%;
+  height: 100%;
+}
+
+.icon-badge svg path {
+  fill: var(--icon-color, #1a2e05);
+}
+
+.icon-badge svg, 
+.icon-badge i {
+  display: block;
+  font-size: var(--icon-size, 2.2rem);
+  line-height: 1;
+  background: linear-gradient(135deg, var(--grad));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+/* Fix for icons that are specifically FontAwesome (i tags) vs HubSpot (svg tags) */
+.icon-badge i {
+  background: linear-gradient(135deg, var(--grad));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.icon-badge svg {
+  /* For SVGs, background-clip: text doesn't work, so we use the fill variable */
+  background: none;
+  -webkit-text-fill-color: initial;
+}
+
+.embed-badge img,
+.embed-badge iframe {
+  width: 60px;
+  height: 60px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Botón / Link */
+.cert-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none !important;
+  padding: 0.75rem 1.25rem;
+  border: 1px solid rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+}
+
+.cert-link:hover {
+  transform: translateX(5px);
+}
+
+.cert-link--hover-grad:hover {
+  background-image: linear-gradient(90deg, var(--grad)) !important;
+  color: #ffffff !important;
+  border-color: transparent;
+}
+
+.cert-link i {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.cert-link:hover i {
+  transform: translate(2px, -2px);
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+  .cert-card {
+    padding: 2rem;
+    border-radius: 2rem;
+    grid-template: 
+      'icon title' auto
+      'content content' 1fr
+      'bar bar' 4px / auto 1fr;
+  }
+  
+  .cert-icon-area { align-self: center; }
+}
+
+/* Swiper Customization */
+.certs-swiper .swiper-pagination-bullet-active {
+  background: linear-gradient(135deg, var(--grad));
+  width: 24px;
+  border-radius: 4px;
+}
+
+.certs-swiper .swiper-button-next,
+.certs-swiper .swiper-button-prev {
+  color: #1a2e05;
+  background: rgba(255, 255, 255, 0.8);
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.certs-swiper .swiper-button-next::after,
+.certs-swiper .swiper-button-prev::after {
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.certs-swiper .swiper-button-next:hover,
+.certs-swiper .swiper-button-prev:hover {
+  background: linear-gradient(135deg, var(--grad));
+  color: #fff;
+  transform: scale(1.1);
+}
+
+.certs-swiper .swiper-pagination {
+  bottom: 0 !important;
+}
+
+/* Animations */
+@keyframes cardIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.cert-card {
+  animation: cardIn 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+
+.certs-grid .cert-card:nth-child(1) { animation-delay: 0.1s; }
+.certs-grid .cert-card:nth-child(2) { animation-delay: 0.2s; }
+.certs-grid .cert-card:nth-child(3) { animation-delay: 0.3s; }
+.certs-grid .cert-card:nth-child(4) { animation-delay: 0.4s; }
+.certs-grid .cert-card:nth-child(5) { animation-delay: 0.5s; }
+.certs-grid .cert-card:nth-child(6) { animation-delay: 0.6s; }

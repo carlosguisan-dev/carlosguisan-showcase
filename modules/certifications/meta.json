@@ -1,0 +1,128 @@
+{
+  "label": "Certificaciones HubSpot Academy",
+  "is_available_for_new_content": true,
+  "icon": "https://cdn2.hubspot.net/hubfs/53/tools/icons/certificate.svg",
+  "host_template_types": ["PAGE", "LANDING_PAGE", "BLOG_POST"],
+  "module_id": 1234567890,
+  "css_assets": [
+    {
+      "autoload": true,
+      "path": "module.css"
+    }
+  ],
+  "js_assets": [],
+  "other_assets": [],
+  "fields": [
+    {
+      "id": "section_title",
+      "label": "Título de la Sección",
+      "type": "text",
+      "default": "Certificaciones HubSpot Academy",
+      "help_text": "Título principal que aparecerá en la sección"
+    },
+    {
+      "id": "section_intro",
+      "label": "Texto Introductorio",
+      "type": "text",
+      "default": "Formación oficial que valida mi expertise técnico en la plataforma HubSpot",
+      "help_text": "Texto descriptivo que aparece debajo del título"
+    },
+    {
+      "id": "certifications",
+      "label": "Certificaciones",
+      "type": "group",
+      "repeater": true,
+      "occurrence": {
+        "min": 1,
+        "max": 10
+      },
+      "help_text": "Agrega tus certificaciones de HubSpot Academy",
+      "fields": [
+        {
+          "id": "cert_title",
+          "label": "Título de la Certificación",
+          "type": "text",
+          "default": "CMS for Developers",
+          "help_text": "Nombre de la certificación (ej: CMS for Developers)"
+        },
+        {
+          "id": "cert_issuer",
+          "label": "Emisor",
+          "type": "text",
+          "default": "HubSpot Academy",
+          "help_text": "Quién emitió la certificación"
+        },
+        {
+          "id": "cert_icon",
+          "label": "Ícono (emoji)",
+          "type": "text",
+          "default": "🎓",
+          "help_text": "Emoji que representa la certificación (se usará si no hay embed)"
+        },
+        {
+          "id": "cert_embed_code",
+          "label": "Código Embed de HubSpot Academy",
+          "type": "textarea",
+          "help_text": "Pega aquí el código embed que proporciona HubSpot Academy para mostrar el badge oficial. Si tienes este código, se usará en lugar del ícono emoji."
+        },
+        {
+          "id": "cert_url",
+          "label": "URL de la Certificación",
+          "type": "url",
+          "help_text": "Enlace directo a la certificación en HubSpot Academy (opcional)"
+        }
+      ]
+    },
+    {
+      "id": "additional_cert",
+      "label": "Certificación Adicional",
+      "type": "group",
+      "help_text": "Para mostrar certificaciones adicionales como contribuciones a WordPress",
+      "fields": [
+        {
+          "id": "show_additional",
+          "label": "Mostrar Certificación Adicional",
+          "type": "boolean",
+          "default": true,
+          "help_text": "Activar para mostrar una certificación adicional"
+        },
+        {
+          "id": "additional_text",
+          "label": "Texto de Certificación Adicional",
+          "type": "text",
+          "default": "🌍 Contribuidor Oficial Traducción WordPress Costa Rica",
+          "help_text": "Texto que aparecerá en la sección adicional"
+        }
+      ]
+    },
+    {
+      "id": "styling",
+      "label": "Personalización de Estilos",
+      "type": "group",
+      "help_text": "Personaliza los colores de la sección",
+      "fields": [
+        {
+          "id": "background_color",
+          "label": "Color de Fondo",
+          "type": "color",
+          "default": "#f5f5f5",
+          "help_text": "Color de fondo de toda la sección"
+        },
+        {
+          "id": "text_color",
+          "label": "Color del Texto",
+          "type": "color",
+          "default": "#333333",
+          "help_text": "Color principal del texto"
+        },
+        {
+          "id": "accent_color",
+          "label": "Color de Acento",
+          "type": "color",
+          "default": "#a3d977",
+          "help_text": "Color de acento para bordes y elementos destacados"
+        }
+      ]
+    }
+  ]
+}

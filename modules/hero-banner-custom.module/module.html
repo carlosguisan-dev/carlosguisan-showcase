@@ -1,0 +1,209 @@
+{# Module Styling #}
+{% require_css %}
+<style>
+  {% scope_css %}
+
+  .hero {
+    {% if module.styles.background.color.color %}
+    background-color: rgba({{ module.styles.background.color.color|convert_rgb }}, {{ module.styles.background.color.opacity / 100 }});
+    {% endif %}
+    {{ module.styles.background.image.css }}
+    {% if module.styles.size.minimum_height %}
+    min-height: {{ module.styles.size.minimum_height ~ 'rem' }};
+    {% endif %}
+  }
+  
+  {% if module.styles.background.gradient_overlay.css %}
+  .hero__gradient-overlay {
+    background: {{ module.styles.background.gradient_overlay.css }};
+  }
+  {% endif %}
+
+  .hero__content {
+    {% if module.styles.content.max_width %}
+    max-width: {{ module.styles.content.max_width ~ 'px' }};
+    {% endif %}
+    text-align: {{ module.styles.content.alignment }};
+    {% if module.styles.content.alignment == 'center' %}
+    margin: 0 auto;
+    {% endif %}
+    {% if module.styles.content.alignment == 'right' %}
+    margin-left: auto;
+    {% endif %}
+  }
+
+  {% if module.styles.content.background.color.color %}
+  .hero:after, 
+  .hero__subheading,
+  .hero__heading, 
+  .hero__supporting-text {
+    background-color: rgba({{ module.styles.content.background.color.color|convert_rgb }}, {{ module.styles.content.background.color.opacity / 100 }});
+  }
+  {% endif %}
+
+  .hero__subheading,
+  .hero__heading,
+  .hero__supporting-text {
+    display: block;
+    width: fit-content;
+    {% if module.styles.content.alignment == 'center' %}
+    margin-left: auto;
+    margin-right: auto;
+    {% endif %}
+    {% if module.styles.content.alignment == 'right' %}
+    margin-left: auto;
+    {% endif %}
+  }
+
+  {% if module.styles.subheading.text.font.css %}
+  .hero__subheading {
+    {% if module.styles.subheading.text.font.color %}
+      color: {{ module.styles.subheading.text.font.color }};
+    {% endif %}
+    {{ module.styles.subheading.text.font.style }};
+    {{ module.styles.subheading.text.font.css }}
+  }
+  {% endif %}  
+  
+  {% if module.styles.heading.text.font.css %}
+  .hero__heading {
+    {% if module.styles.heading.text.font.color %}
+      color: {{ module.styles.heading.text.font.color }};
+    {% endif %}
+    {{ module.styles.heading.text.font.style }};
+    {{ module.styles.heading.text.font.css }}
+  }
+  {% endif %} 
+  
+  {% if module.styles.supporting_text.text.font.css %}
+  .hero__supporting-text,
+  .hero__supporting-text div,
+  .hero__supporting-text p {
+    {% if module.styles.supporting_text.text.font.color %}
+      color: {{ module.styles.supporting_text.text.font.color }};
+    {% endif %}
+    {{ module.styles.supporting_text.text.font.style }};
+    {{ module.styles.supporting_text.text.font.css }}
+  }
+  {% endif %} 
+
+  .hero__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: {{ module.styles.buttons.spacing|default(2) ~ 'rem' }};
+    {% if module.styles.content.alignment == 'center' %}
+    justify-content: center;
+    {% endif %}
+    {% if module.styles.content.alignment == 'right' %}
+    justify-content: flex-end;
+    {% endif %}
+  }
+
+  {# All Buttons Base Override #}
+  .button {
+    border-radius: {{ module.styles.buttons.corner_radius|default(4) ~ 'px' }};
+  }
+
+  {# Primary Button Overrides #}
+  {% if module.styles.buttons.primary.background.color or module.styles.buttons.primary.text_color.color %}
+    .button.button--primary {
+      {% if module.styles.buttons.primary.background.color %}
+        {% set p_bg_alpha = (module.styles.buttons.primary.background.opacity / 100)|default(1) %}
+        background-color: rgba({{ module.styles.buttons.primary.background.color|convert_rgb }}, {{ p_bg_alpha }});
+        border-color: rgba({{ module.styles.buttons.primary.background.color|convert_rgb }}, {{ p_bg_alpha }});
+      {% endif %}
+      {% if module.styles.buttons.primary.text_color.color %}
+        color: {{ module.styles.buttons.primary.text_color.color }};
+      {% endif %}
+    }
+  {% endif %}
+
+  {% if module.styles.buttons.primary.background_hover.color or module.styles.buttons.primary.text_color_hover.color %}
+    .button.button--primary:hover,
+    .button.button--primary:focus {
+      {% if module.styles.buttons.primary.background_hover.color %}
+        {% set p_bgh_alpha = (module.styles.buttons.primary.background_hover.opacity / 100)|default(1) %}
+        background-color: rgba({{ module.styles.buttons.primary.background_hover.color|convert_rgb }}, {{ p_bgh_alpha }});
+        border-color: rgba({{ module.styles.buttons.primary.background_hover.color|convert_rgb }}, {{ p_bgh_alpha }});
+      {% endif %}
+      {% if module.styles.buttons.primary.text_color_hover.color %}
+        color: {{ module.styles.buttons.primary.text_color_hover.color }};
+      {% endif %}
+    }
+  {% endif %}
+
+  {# Secondary Button Overrides #}
+  {% if module.styles.buttons.secondary.background.color or module.styles.buttons.secondary.text_color.color %}
+    .button.button--secondary {
+      {% if module.styles.buttons.secondary.background.color %}
+        {% set s_bg_alpha = (module.styles.buttons.secondary.background.opacity / 100)|default(1) %}
+        background-color: rgba({{ module.styles.buttons.secondary.background.color|convert_rgb }}, {{ s_bg_alpha }});
+        border-color: rgba({{ module.styles.buttons.secondary.background.color|convert_rgb }}, {{ s_bg_alpha }});
+      {% endif %}
+      {% if module.styles.buttons.secondary.text_color.color %}
+        color: {{ module.styles.buttons.secondary.text_color.color }};
+      {% endif %}
+    }
+  {% endif %}
+
+  {% if module.styles.buttons.secondary.background_hover.color or module.styles.buttons.secondary.text_color_hover.color %}
+    .button.button--secondary:hover,
+    .button.button--secondary:focus {
+      {% if module.styles.buttons.secondary.background_hover.color %}
+        {% set s_bgh_alpha = (module.styles.buttons.secondary.background_hover.opacity / 100)|default(1) %}
+        background-color: rgba({{ module.styles.buttons.secondary.background_hover.color|convert_rgb }}, {{ s_bgh_alpha }});
+        border-color: rgba({{ module.styles.buttons.secondary.background_hover.color|convert_rgb }}, {{ s_bgh_alpha }});
+      {% endif %}
+      {% if module.styles.buttons.secondary.text_color_hover.color %}
+        color: {{ module.styles.buttons.secondary.text_color_hover.color }};
+      {% endif %}
+    }
+  {% endif %}  
+  {% end_scope_css %}
+</style>
+{% end_require_css %}
+
+{# Hero Banner #}
+<section class="hero">
+  <div class="content-wrapper content-wrapper--vertical-spacing">
+    
+    {# Gradient Overlay #}
+    <div class="hero__gradient-overlay"></div>
+    
+    {# Content #}
+    <div class="hero__content">
+      {% if module.subheading %}
+        <p class="hero__subheading">{{ module.subheading }}</p>
+      {% endif %}
+      
+      {% if module.heading %}
+        <h1 class="hero__heading">{{ module.heading }}</h1>
+      {% endif %}
+      
+      {% if module.supporting_text %}
+        <div class="hero__supporting-text">{{ module.supporting_text }}</div>
+      {% endif %}
+
+      {% if module.ctas %}
+        <div class="hero__actions">
+          {% for item in module.ctas %}
+            {% set href = item.link.url.href %}
+            {% if item.link.url.type is equalto "CONTENT" %}
+              {% if item.link.url.content_id %}
+                {% set href = content_by_id(item.link.url.content_id).absolute_url %}
+              {% endif %}
+            {% endif %}
+            <a href="{{ href }}" class="button button--{{ item.button_type }}"
+              {% if item.link.open_in_new_tab %}target="_blank"{% endif %}
+              {% if item.link.no_follow %}rel="nofollow"{% endif %}
+            >
+              {{ item.button_text }}
+            </a>
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    
+  </div>
+</section>

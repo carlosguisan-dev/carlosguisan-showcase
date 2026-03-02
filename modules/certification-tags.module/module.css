@@ -1,0 +1,103 @@
+/* ========================================
+   CERTIFICATION TAGS - PREMIUM STYLES
+   ======================================== */
+
+.cert-tags-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.cert-tag {
+  display: flex;
+  align-items: center;
+  padding: 0.75rem 1.25rem;
+  background-color: var(--tag-bg);
+  border: var(--tag-border-w) solid rgba(107, 114, 128, 0.1);
+  border-radius: var(--tag-radius);
+  text-decoration: none !important;
+  color: var(--tag-color);
+  font-family: var(--tag-family);
+  font-size: var(--tag-size);
+  font-weight: var(--tag-weight);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.cert-tag::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+  z-index: 0;
+}
+
+.cert-tag:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.cert-tag:hover .tag-name,
+.cert-tag:hover .tag-icon,
+.cert-tag:hover .tag-arrow {
+  color: var(--accent-text);
+}
+
+.cert-tag:hover::before {
+  width: 100%;
+  opacity: 0.1;
+}
+
+.tag-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 1rem;
+  font-size: 1.25rem;
+  color: var(--accent);
+  transition: all 0.3s ease;
+  z-index: 1;
+}
+
+.tag-icon svg, 
+.tag-icon i {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.tag-name {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  z-index: 1;
+}
+
+.tag-arrow {
+  margin-left: 0.5rem;
+  font-size: 0.8rem;
+  color: inherit;
+  opacity: 0.3;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  z-index: 1;
+}
+
+.cert-tag:hover .tag-arrow {
+  opacity: 1;
+  transform: translateX(4px);
+  color: var(--accent);
+}
+
+/* Forcing font from fields */
+.cert-tag .tag-name {
+  font-size: inherit;
+}

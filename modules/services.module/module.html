@@ -1,0 +1,98 @@
+{% set instance_id = name %}
+
+{% require_css %}
+  <style>
+    /* Scoped Variables for Colors & Typography */
+    #{{ instance_id }} {
+      /* Icon */
+      --icon-color: rgba({{ module.style.icon_style.color.color|default('#FFFFFF')|convert_rgb }}, {{ module.style.icon_style.color.opacity|default(100) / 100 }});
+      --icon-size: {{ module.style.icon_style.width|default(24) }}px;
+
+      /* Text */
+      --text-hover-color: rgba({{ module.style.typography.text_color_hover.color|default('#3c3163')|convert_rgb }}, {{ module.style.typography.text_color_hover.opacity|default(100) / 100 }});
+      --title-font: {{ module.style.typography.title_font.css }};
+      --desc-font: {{ module.style.typography.description_font.css }};
+
+      /* Card */
+      --accent-color: rgba({{ module.style.card_style.accent_color.color|default('#3c3163')|convert_rgb }}, {{ module.style.card_style.accent_color.opacity|default(100) / 100 }});
+      --card-bg-reveal: rgba({{ module.style.card_style.card_bg_reveal.color|default('#FFFFFF')|convert_rgb }}, {{ module.style.card_style.card_bg_reveal.opacity|default(100) / 100 }});
+      --card-overlay: rgba({{ module.style.card_style.overlay_color.color|default('#000000')|convert_rgb }}, {{ module.style.card_style.overlay_color.opacity|default(50) / 100 }});
+    }
+
+    /* Layout Columns */
+    #{{ instance_id }} .services-grid {
+      grid-template-columns: repeat({{ module.style.layout.mobile_columns }}, 1fr);
+    }
+
+    @media (min-width: 480px) {
+      #{{ instance_id }} .services-grid {
+        grid-template-columns: repeat({{ module.style.layout.tablet_columns }}, 1fr);
+      }
+    }
+    
+    @media (min-width: 768px) {
+      #{{ instance_id }} .services-grid {
+        grid-template-columns: repeat({{ module.style.layout.desktop_columns }}, 1fr);
+      }
+    }
+
+
+    /* Typography Injection */
+    #{{ instance_id }} .service-title {
+      color: #FFFFFF; /* Default on image */
+      {{ module.style.typography.title_font.css }}
+    }
+    
+    #{{ instance_id }} .service-description {
+      color: #FFFFFF; /* Default on image */
+      {{ module.style.typography.description_font.css }}
+    }
+
+    #{{ instance_id }} .service-card:hover .service-title {
+      color: var(--text-hover-color);
+    }
+    
+    #{{ instance_id }} .service-card:hover .service-description {
+      color: var(--text-hover-color);
+    }
+  </style>
+{% end_require_css %}
+
+<div id="{{ instance_id }}" class="services-module">
+  <div class="services-grid">
+    {% for item in module.services %}
+      {% set href = (item.use_link and item.link.url.href) ? item.link.url.href : "" %}
+      {% if item.link.url.type is equalto "EMAIL_ADDRESS" and href %}
+        {% set href = "mailto:" + href %}
+      {% endif %}
+      
+      {% set tag = href ? 'a' : 'div' %}
+      {% set attrs = href ? 'href="' ~ href ~ '"' : '' %}
+      {% if href and item.link.open_in_new_tab %}
+        {% set attrs = attrs ~ ' target="_blank" rel="noopener"' %}
+      {% endif %}
+
+      <{{ tag }} class="service-card" {{ attrs }} style="--bg-img: url('{{ item.image.src }}')">
+        <div class="service-content">
+          <h3 class="service-title">{{ item.title }}</h3>
+          <div class="service-description">{{ item.description }}</div>
+        </div>
+        
+        {% if item.icon.name %}
+          <div class="service-icon-wrapper">
+            {% icon
+              name="{{ item.icon.name }}"
+              style="{{ item.icon.type }}"
+              unicode="{{ item.icon.unicode }}"
+              icon_set="{{ item.icon.icon_set }}"
+              no_wrapper=True
+            %}
+            {# Use no_wrapper=True if possible, but standard usually outputs span/svg. 
+               The wrapper div .service-icon-wrapper handles positioning.
+            #}
+          </div>
+        {% endif %}
+      </{{ tag }}>
+    {% endfor %}
+  </div>
+</div>

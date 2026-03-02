@@ -1,0 +1,42 @@
+.icon-content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.icon-content-item {
+  display: flex;
+  align-items: center;
+  gap: var(--gap, 15px);
+}
+
+.icon-wrapper {
+  flex-shrink: 0;
+  width: var(--icon-size, 24px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon-wrapper svg {
+  fill: var(--icon-color, #333);
+  width: var(--icon-size, 24px) !important;
+  height: auto;
+}
+
+.icon-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.content-wrapper {
+  flex: 1;
+}
+
+.content-wrapper > *:first-child {
+  margin-top: 0;
+}
+.content-wrapper > *:last-child {
+  margin-bottom: 0;
+}

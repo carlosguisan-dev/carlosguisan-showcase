@@ -1,0 +1,41 @@
+{% require_css %}
+  <style>
+    {% scope_css %}
+      .icon-content-list {
+        --icon-color: {{ module.icon_styles.icon_color.color }};
+        --icon-size: {{ module.icon_styles.icon_size }}px;
+        --gap: {{ module.icon_styles.gap }}px;
+      }
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}
+<div class="icon-content-list">
+  {% for item in module.items %}
+    <div class="icon-content-item">
+      <div class="icon-wrapper">
+        {% if item.icon_type == 'fontawesome' %}
+          {% icon
+            name="{{ item.fa_icon.name }}"
+            style="{{ item.fa_icon.type }}"
+            unicode="{{ item.fa_icon.unicode }}"
+            icon_set="{{ item.fa_icon.icon_set }}"
+          %}
+        {% elif item.icon_type == 'image' %}
+          {% if item.custom_image.src %}
+            {% set sizeAttrs = 'width="{{ item.custom_image.width }}" height="{{ item.custom_image.height }}"' %}
+            {% if item.custom_image.size_type == 'auto' %}
+              {% set sizeAttrs = 'style="max-width: 100%; height: auto;"' %}
+            {% elif item.custom_image.size_type == 'auto_custom_max' %}
+              {% set sizeAttrs = 'width="{{ item.custom_image.max_width }}" height="{{ item.custom_image.max_height }}" style="max-width: 100%; height: auto;"' %}
+            {% endif %}
+             {% set loadingAttr = item.custom_image.loading != 'disabled' ? 'loading="{{ item.custom_image.loading }}"' : '' %}
+            <img src="{{ item.custom_image.src }}" alt="{{ item.custom_image.alt }}" {{ loadingAttr }} {{ sizeAttrs }}>
+          {% endif %}
+        {% endif %}
+      </div>
+      <div class="content-wrapper" style="{{ module.icon_styles.content_font.css }}">
+        {{ item.content }}
+      </div>
+    </div>
+  {% endfor %}
+</div>

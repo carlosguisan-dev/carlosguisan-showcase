@@ -1,0 +1,98 @@
+{% require_css %}
+  <style>
+    #project-list-section-{{name}}{
+      --link-color: {{ module.styling.link_color }};
+      --link-hover-color: {{ module.styling.link_hover_color }};
+      --card-bg: {{ module.styling.background_color }};
+      --button-bg: {{ module.styling.button_styles.button_background_color }};
+      --button-text: {{ module.styling.button_styles.button_text_color }};
+      --button-hover-bg: {{ module.styling.button_styles.button_hover_background_color }};
+      --button-hover-text: {{ module.styling.button_styles.button_hover_text_color }};
+      --button-radius: {{ module.styling.button_styles.button_border_radius }}px;
+      --button-padding-v: {{ module.styling.button_styles.button_padding_vertical }}px;
+      --button-padding-h: {{ module.styling.button_styles.button_padding_horizontal }}px;
+      --button-font-size: {{ module.styling.button_styles.button_font_size }}px;
+      --button-font-weight: {{ module.styling.button_styles.button_font_weight }};
+      --toggle-button-bg: {{ module.styling.button_styles.toggle_button_background_color }};
+      --toggle-button-text: {{ module.styling.button_styles.toggle_button_text_color }};
+      --toggle-button-border: {{ module.styling.button_styles.toggle_button_border_color }};
+      --toggle-button-hover-bg: {{ module.styling.button_styles.toggle_button_hover_background_color }};
+      --toggle-button-hover-text: {{ module.styling.button_styles.toggle_button_hover_text_color }};
+    }
+  </style>
+{% end_require_css %}
+<section class="project-list-section" id="project-list-section-{{name}}">
+  <div class="project-list-grid" data-columns-desktop="{{ module.styling.columns_desktop }}" data-columns-mobile="{{ module.styling.columns_mobile }}">
+    {% for project in module.projects %}
+      <div class="project-card" style="background-color: {{ module.styling.background_color }}; border-color: {{ module.styling.border_color }};">
+        
+        {% if project.project_image and project.project_image.src %}
+          <div class="project-image-wrapper">
+            <img src="{{ project.project_image.src }}" alt="{{ project.project_image.alt }}" class="project-image" />
+            {% if project.is_demo is defined %}
+              <span class="project-badge project-badge-{% if project.is_demo %}demo{% else %}client{% endif %}">
+                {% if project.is_demo %}Demo{% else %}Cliente{% endif %}
+              </span>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+        <div class="project-content">
+          {% if project.project_name %}
+            <h3 class="project-name" style="color: {{ module.styling.heading_color }};">{{ project.project_name }}</h3>
+          {% endif %}
+          
+          {% if project.project_description %}
+            <div class="project-description" style="color: {{ module.styling.description_color }};">
+              {{ project.project_description }}
+            </div>
+          {% endif %}
+          
+          {% if project.tech_stack %}
+            {% set stack_limit = module.styling.tech_stack_limit|int if module.styling.tech_stack_limit else 6 %}
+            {% set stack_count = project.tech_stack|length %}
+            {% set has_more = stack_count > stack_limit and stack_limit > 0 %}
+            <div class="tech-stack" data-project-index="{{ loop.index0 }}">
+              <h4 class="tech-stack-title" style="color: {{ module.styling.text_color }};">Stack Tecnológico</h4>
+              <div class="tech-stack-items {% if has_more %}tech-stack-collapsed{% endif %}" data-limit="{{ stack_limit }}">
+                {% for tool in project.tech_stack %}
+                  <div class="tech-stack-item {% if has_more and loop.index > stack_limit %}tech-stack-hidden{% endif %}" title="{{ tool.tool_name }}">
+                    {% if tool.tool_icon_type == "emoji" and tool.tool_icon_emoji %}
+                      <span class="tool-icon-emoji">{{ tool.tool_icon_emoji }}</span>
+                    {% elif tool.tool_icon_type == "fontawesome" and tool.tool_icon_fontawesome %}
+                      <span class="tool-icon-fontawesome">
+                        {% icon name="{{ tool.tool_icon_fontawesome.name }}" style="{{ tool.tool_icon_fontawesome.type }}" unicode="{{ tool.tool_icon_fontawesome.unicode }}" icon_set="{{ tool.tool_icon_fontawesome.icon_set }}" purpose="decorative" title="{{ tool.tool_name }}" no_wrapper="true" %}
+                      </span>
+                    {% elif tool.tool_icon_type == "image" and tool.tool_icon_image.src %}
+                      <img src="{{ tool.tool_icon_image.src }}" alt="{{ tool.tool_name }}" class="tool-icon-image" />
+                    {% endif %}
+                    {% if tool.tool_name %}
+                      <span class="tool-name" style="color: {{ module.styling.text_color }};">{{ tool.tool_name }}</span>
+                    {% endif %}
+                  </div>
+                {% endfor %}
+              </div>
+              {% if has_more %}
+                <button class="tech-stack-toggle" data-project-index="{{ loop.index0 }}" aria-label="Mostrar más herramientas">
+                  <span class="toggle-text">Ver más ({{ stack_count - stack_limit }})</span>
+                  <span class="toggle-icon">▼</span>
+                </button>
+              {% endif %}
+            </div>
+          {% endif %}
+          
+          {% if project.project_link and project.project_link.href %}
+            <div class="project-link-wrapper">
+              <a href="{{ project.project_link.href }}" 
+                 class="project-link" 
+                 {% if project.project_link.type == "EXTERNAL" %}target="_blank" rel="noopener noreferrer"{% endif %}>
+                {{ project.link_text|default("Ver Proyecto") }}
+              </a>
+            </div>
+          {% endif %}
+        </div>
+        
+      </div>
+    {% endfor %}
+  </div>
+</section>

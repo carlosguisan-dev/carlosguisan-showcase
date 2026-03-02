@@ -1,0 +1,50 @@
+# HubSpot (NUNCA pushees)
+hubspot.config.yml
+.hubspot-config.json
+.hubspot/
+.hubspot-cache/
+archived.hubspot.config.yml
+hubspot.config.yml
+.hsaccount
+
+# Node
+node_modules/
+package-lock.json
+yarn.lock
+npm-debug.log*
+yarn-error.log*
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.sublime-project
+*.swp
+*~
+.DS_Store
+Thumbs.db
+
+# Logs
+logs/
+*.log
+
+# Build
+dist/
+build/
+tmp/
+temp/
+
+# Testing
+coverage/
+.jest/
+
+# Env
+.env
+.env.local
+*.pem
+*.key

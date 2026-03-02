@@ -1,0 +1,279 @@
+/* ========================================
+   MÓDULO DE CERTIFICACIONES
+   ======================================== */
+
+.certifications-section {
+  padding: 80px 0;
+  background-color: var(--brand-bg-alt, #f5f5f5);
+}
+
+.certifications-section .container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Título y texto introductorio */
+.section-title {
+  font-family: 'Work Sans', -apple-system, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--brand-primary, #2d5016);
+  text-align: center;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.section-intro {
+  font-family: 'Work Sans', -apple-system, sans-serif;
+  font-size: 1.125rem;
+  color: var(--text-secondary, #666666);
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 3rem;
+  line-height: 1.6;
+}
+
+/* Grid de certificaciones */
+.certs-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+/* Cards de certificación */
+.cert-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--shadow-sm, 0 2px 4px rgba(45, 80, 22, 0.08));
+  border: 1px solid var(--border-light, #e0e0e0);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg, 0 10px 30px rgba(45, 80, 22, 0.15));
+  border-color: var(--brand-secondary, #a3d977);
+}
+
+/* Badge de certificación */
+.cert-badge {
+  width: 80px;
+  height: 80px;
+  background: #ffffff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem;
+  box-shadow: var(--shadow-md, 0 4px 12px rgba(45, 80, 22, 0.12));
+  border: 3px solid var(--brand-secondary, #a3d977);
+}
+
+.badge-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+/* Badge con embed de HubSpot */
+.embed-badge {
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+}
+
+.embed-badge iframe,
+.embed-badge img {
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+}
+
+/* Título de la certificación */
+.cert-card h4 {
+  font-family: 'Work Sans', -apple-system, sans-serif;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--brand-primary, #2d5016);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+/* Emisor de la certificación */
+.cert-card p {
+  font-family: 'Work Sans', -apple-system, sans-serif;
+  font-size: 0.875rem;
+  color: var(--text-secondary, #666666);
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+/* Enlace de certificación */
+.cert-link {
+  font-family: 'Work Sans', -apple-system, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--brand-secondary, #a3d977);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--brand-secondary, #a3d977);
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: inline-block;
+}
+
+.cert-link:hover {
+  background-color: var(--brand-secondary, #a3d977);
+  color: var(--brand-primary, #2d5016);
+  text-decoration: none;
+}
+
+/* Certificación adicional */
+.additional-cert {
+  text-align: center;
+  padding: 2rem;
+  background: var(--color-accent-light, #e8f5d9);
+  border-radius: 12px;
+  border: 1px solid var(--brand-secondary, #a3d977);
+}
+
+.additional-cert p {
+  font-family: 'Work Sans', -apple-system, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--brand-primary, #2d5016);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+
+/* Tablet */
+@media (max-width: 1024px) {
+  .certs-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+  
+  .section-title {
+    font-size: 2.25rem;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .certifications-section {
+    padding: 60px 0;
+  }
+  
+  .certs-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  
+  .cert-card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .section-intro {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+  
+  .cert-badge {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 1rem;
+  }
+  
+  .badge-icon {
+    font-size: 1.5rem;
+  }
+  
+  .embed-badge iframe,
+  .embed-badge img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+/* Mobile pequeño */
+@media (max-width: 480px) {
+  .certs-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  .certifications-section .container {
+    padding: 0 15px;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .additional-cert {
+    padding: 1.5rem;
+  }
+}
+
+/* ========================================
+   ANIMACIONES
+   ======================================== */
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.cert-card {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.cert-card:nth-child(1) { animation-delay: 0.1s; }
+.cert-card:nth-child(2) { animation-delay: 0.2s; }
+.cert-card:nth-child(3) { animation-delay: 0.3s; }
+.cert-card:nth-child(4) { animation-delay: 0.4s; }
+.cert-card:nth-child(5) { animation-delay: 0.5s; }
+
+/* ========================================
+   ESTADOS DE CARGA
+   ======================================== */
+
+.cert-card.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.cert-card.loading .cert-badge {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

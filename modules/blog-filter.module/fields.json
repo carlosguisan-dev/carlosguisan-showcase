@@ -1,0 +1,386 @@
+[ {
+  "id" : "filter_style",
+  "name" : "filter_style",
+  "label" : "Estilo de Filtro",
+  "help_text" : "Selecciona el estilo de filtro que deseas usar",
+  "required" : false,
+  "locked" : false,
+  "display" : "select",
+  "choices" : [ [ "search_select", "Búsqueda + Select" ], [ "carousel", "Carousel de Tags" ] ],
+  "multiple" : false,
+  "reordering_enabled" : false,
+  "preset" : null,
+  "type" : "choice",
+  "display_width" : null,
+  "default" : "search_select"
+}, {
+  "id" : "search_placeholder",
+  "name" : "search_placeholder",
+  "label" : "Placeholder del Campo de Búsqueda",
+  "help_text" : "Texto que aparecerá en el campo de búsqueda cuando esté vacío",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "filter_style",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "search_select",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Buscar posts..."
+}, {
+  "id" : "select_label",
+  "name" : "select_label",
+  "label" : "Etiqueta del Select",
+  "help_text" : "Texto que aparecerá como etiqueta del select de categorías",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "filter_style",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "search_select",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Filtrar por categoría"
+}, {
+  "id" : "select_default_option",
+  "name" : "select_default_option",
+  "label" : "Opción por Defecto del Select",
+  "help_text" : "Texto que aparecerá como opción por defecto (mostrar todos)",
+  "required" : false,
+  "locked" : false,
+  "visibility" : {
+    "controlling_field" : "filter_style",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "search_select",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "allow_new_line" : false,
+  "type" : "text",
+  "display_width" : null,
+  "default" : "Todas las categorías"
+}, {
+  "id" : "tags",
+  "name" : "tags",
+  "label" : "Tags del Carousel",
+  "help_text" : "Agrega los tags que aparecerán en el carousel. Cada tag puede tener un icono y una descripción personalizada",
+  "required" : false,
+  "locked" : false,
+  "occurrence" : {
+    "min" : 0,
+    "max" : null,
+    "sorting_label_field" : "blog_tag",
+    "default" : 0
+  },
+  "visibility" : {
+    "controlling_field" : "filter_style",
+    "controlling_field_path" : null,
+    "controlling_value_regex" : "carousel",
+    "property" : null,
+    "operator" : "EQUAL",
+    "access" : null
+  },
+  "children" : [ {
+    "id" : "blog_tag",
+    "name" : "blog_tag",
+    "label" : "Tag del Blog",
+    "help_text" : "Selecciona el tag del blog que deseas mostrar en el carousel",
+    "required" : false,
+    "locked" : false,
+    "tag_value" : "ALL",
+    "type" : "tag",
+    "display_width" : null
+  }, {
+    "id" : "tag_icon_type",
+    "name" : "tag_icon_type",
+    "label" : "Tipo de Icono",
+    "help_text" : "Selecciona si deseas usar un emoji, un icono FontAwesome o una imagen",
+    "required" : false,
+    "locked" : false,
+    "display" : "select",
+    "choices" : [ [ "emoji", "Emoji" ], [ "fontawesome", "FontAwesome" ], [ "image", "Imagen" ] ],
+    "multiple" : false,
+    "reordering_enabled" : false,
+    "preset" : null,
+    "type" : "choice",
+    "display_width" : null,
+    "default" : "emoji"
+  }, {
+    "id" : "tag_icon_emoji",
+    "name" : "tag_icon_emoji",
+    "label" : "Icono Emoji",
+    "help_text" : "Ingresa un emoji como icono (ej: 📝, 🚀, 💡)",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "tag_icon_type",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "emoji",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "allow_new_line" : false,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "📝"
+  }, {
+    "id" : "tag_icon_fontawesome",
+    "name" : "tag_icon_fontawesome",
+    "label" : "Icono FontAwesome",
+    "help_text" : "Selecciona un icono de FontAwesome",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "tag_icon_type",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "fontawesome",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "icon_set" : "fontawesome-5.0.10",
+    "type" : "icon",
+    "display_width" : null,
+    "default" : {
+      "name" : null,
+      "unicode" : null,
+      "type" : "REGULAR"
+    }
+  }, {
+    "id" : "tag_icon_image",
+    "name" : "tag_icon_image",
+    "label" : "Imagen del Icono",
+    "help_text" : "Sube una imagen para usar como icono del tag",
+    "required" : false,
+    "locked" : false,
+    "visibility" : {
+      "controlling_field" : "tag_icon_type",
+      "controlling_field_path" : null,
+      "controlling_value_regex" : "image",
+      "property" : null,
+      "operator" : "EQUAL",
+      "access" : null
+    },
+    "responsive" : false,
+    "resizable" : true,
+    "show_loading" : false,
+    "type" : "image",
+    "display_width" : null,
+    "default" : {
+      "src" : "",
+      "alt" : null,
+      "size_type" : null,
+      "width" : null,
+      "height" : null,
+      "max_width" : null,
+      "max_height" : null,
+      "loading" : "disabled"
+    }
+  }, {
+    "id" : "tag_description",
+    "name" : "tag_description",
+    "label" : "Descripción del Tag",
+    "help_text" : "Descripción breve que aparecerá en el carousel para este tag",
+    "required" : false,
+    "locked" : false,
+    "allow_new_line" : true,
+    "type" : "text",
+    "display_width" : null,
+    "default" : "Descripción del tag"
+  } ],
+  "tab" : "CONTENT",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : [ ]
+}, {
+  "id" : "styling",
+  "name" : "styling",
+  "label" : "Personalización de Estilos",
+  "help_text" : "Personaliza los colores y estilos del filtro",
+  "required" : false,
+  "locked" : false,
+  "children" : [ {
+    "id" : "background_color",
+    "name" : "background_color",
+    "label" : "Color de Fondo",
+    "help_text" : "Color de fondo del contenedor del filtro",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : "#ffffff"
+  }, {
+    "id" : "text_color",
+    "name" : "text_color",
+    "label" : "Color del Texto",
+    "help_text" : "Color del texto principal",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : "#333333"
+  }, {
+    "id" : "border_color",
+    "name" : "border_color",
+    "label" : "Color del Borde",
+    "help_text" : "Color del borde de los campos y elementos",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : "#e0e0e0"
+  }, {
+    "id" : "accent_color",
+    "name" : "accent_color",
+    "label" : "Color de Acento",
+    "help_text" : "Color para elementos destacados y estados activos",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : "#2d5016"
+  }, {
+    "id" : "accent_hover_color",
+    "name" : "accent_hover_color",
+    "label" : "Color de Acento (Hover)",
+    "help_text" : "Color para elementos destacados al pasar el mouse",
+    "required" : false,
+    "locked" : false,
+    "type" : "color",
+    "display_width" : null,
+    "default" : "#a3d977"
+  }, {
+    "id" : "carousel_settings",
+    "name" : "carousel_settings",
+    "label" : "Configuración del Carousel",
+    "help_text" : "Ajustes específicos para el estilo carousel",
+    "required" : false,
+    "locked" : false,
+    "children" : [ {
+      "id" : "items_per_view_desktop",
+      "name" : "items_per_view_desktop",
+      "label" : "Items Visibles en Desktop",
+      "help_text" : "Número de tags visibles en el carousel en escritorio",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 4
+    }, {
+      "id" : "items_per_view_tablet",
+      "name" : "items_per_view_tablet",
+      "label" : "Items Visibles en Tablet",
+      "help_text" : "Número de tags visibles en el carousel en tablet",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 3
+    }, {
+      "id" : "items_per_view_mobile",
+      "name" : "items_per_view_mobile",
+      "label" : "Items Visibles en Mobile",
+      "help_text" : "Número de tags visibles en el carousel en móvil",
+      "required" : false,
+      "locked" : false,
+      "display" : "text",
+      "step" : 1,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 2
+    }, {
+      "id" : "show_navigation_arrows",
+      "name" : "show_navigation_arrows",
+      "label" : "Mostrar Flechas de Navegación",
+      "help_text" : "Activa o desactiva las flechas de navegación del carousel",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : true
+    }, {
+      "id" : "auto_play",
+      "name" : "auto_play",
+      "label" : "Reproducción Automática",
+      "help_text" : "Activa o desactiva la reproducción automática del carousel",
+      "required" : false,
+      "locked" : false,
+      "display" : "toggle",
+      "type" : "boolean",
+      "display_width" : null,
+      "default" : false
+    }, {
+      "id" : "auto_play_interval",
+      "name" : "auto_play_interval",
+      "label" : "Intervalo de Reproducción (ms)",
+      "help_text" : "Tiempo en milisegundos entre cada slide automático",
+      "required" : false,
+      "locked" : false,
+      "visibility" : {
+        "controlling_field" : "auto_play",
+        "controlling_field_path" : null,
+        "controlling_value_regex" : "true",
+        "property" : null,
+        "operator" : "EQUAL",
+        "access" : null
+      },
+      "display" : "text",
+      "step" : 100,
+      "type" : "number",
+      "display_width" : null,
+      "default" : 3000
+    } ],
+    "tab" : "STYLE",
+    "expanded" : false,
+    "group_occurrence_meta" : null,
+    "type" : "group",
+    "display_width" : null,
+    "default" : {
+      "items_per_view_desktop" : 4,
+      "items_per_view_tablet" : 3,
+      "items_per_view_mobile" : 2,
+      "show_navigation_arrows" : true,
+      "auto_play" : false,
+      "auto_play_interval" : 3000
+    }
+  } ],
+  "tab" : "STYLE",
+  "expanded" : false,
+  "group_occurrence_meta" : null,
+  "type" : "group",
+  "display_width" : null,
+  "default" : {
+    "background_color" : "#ffffff",
+    "text_color" : "#333333",
+    "border_color" : "#e0e0e0",
+    "accent_color" : "#2d5016",
+    "accent_hover_color" : "#a3d977",
+    "carousel_settings" : {
+      "items_per_view_desktop" : 4,
+      "items_per_view_tablet" : 3,
+      "items_per_view_mobile" : 2,
+      "show_navigation_arrows" : true,
+      "auto_play" : false,
+      "auto_play_interval" : 3000
+    }
+  }
+} ]

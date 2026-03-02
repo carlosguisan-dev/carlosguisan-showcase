@@ -1,0 +1,154 @@
+{% require_css %}
+  <style>
+    {% scope_css %}
+      /* Default Card Styles */
+      .pricing-card {
+        background-color: {{ module.style.default.bg_color.color }};
+      }
+
+      .pricing-card .plan-name {
+        {{ module.style.default.title_font.css }}
+      }
+
+      .pricing-card .plan-price {
+        {{ module.style.default.price_font.css }}
+      }
+
+      .pricing-card .plan-price .frequency {
+        color: {{ module.style.default.description_font.color }}; /* Reuse description color or make separate? using description color for consistency */
+      }
+
+      .pricing-card .plan-price .tax-label {
+        color: {{ module.style.default.description_font.color }};
+      }
+
+      .pricing-card .plan-description ,
+      .pricing-card .plan-description p{
+        {{ module.style.default.description_font.css }}
+      }
+
+      .pricing-card .card-features li {
+        {{ module.style.default.feature_font.css }}
+      }
+      
+      .pricing-card .icon-check {
+        color: {{ module.style.default.feature_icon_color.color }};
+      }
+
+      .pricing-card .cta-button {
+        background-color: {{ module.style.default.cta_bg_color.color }};
+        {{ module.style.default.cta_text_font.css }}
+      }
+
+      /* Highlighted Card Overrides */
+      .pricing-card.highlighted {
+        background-color: {{ module.style.highlight.bg_color.color }};
+        border: 2px solid {{ module.style.highlight.border_color.color }};
+      }
+      
+      .pricing-card.highlighted .plan-name {
+        {{ module.style.highlight.title_font.css }}
+      }
+
+      .pricing-card.highlighted .plan-price {
+        {{ module.style.highlight.price_font.css }}
+      }
+      
+      .pricing-card.highlighted .plan-price .frequency {
+          color: {{ module.style.highlight.description_font.color }}; 
+      }
+
+      .pricing-card.highlighted .plan-price .tax-label {
+          color: {{ module.style.highlight.description_font.color }};
+      }
+
+      .pricing-card.highlighted .plan-description ,
+      .pricing-card.highlighted .plan-description p{
+        {{ module.style.highlight.description_font.css }}
+      }
+
+      .pricing-card.highlighted .card-features li {
+        {{ module.style.highlight.feature_font.css }}
+      }
+
+      .pricing-card.highlighted .icon-check {
+        color: {{ module.style.highlight.feature_icon_color.color }};
+      }
+
+      .pricing-card.highlighted .cta-button {
+        background-color: {{ module.style.highlight.cta_bg_color.color }};
+        {{ module.style.highlight.cta_text_font.css }}
+      }
+      
+    {% end_scope_css %}
+  </style>
+{% end_require_css %}
+
+<div class="pricing-container">
+  {% for plan in module.plans %}
+    {% if plan.status != 'inactive' %}
+      <div class="pricing-card {% if plan.highlight %}highlighted{% endif %} {% if plan.status == 'coming_soon' %}coming-soon{% endif %}">
+        
+        {% if plan.status == 'coming_soon' %}
+          <div class="status-badge">Próximamente</div>
+        {% endif %}
+
+        <div class="card-header">
+          <h3 class="plan-name">{{ plan.plan_name }}</h3>
+          <div class="plan-price">
+            <span class="currency">{{ plan.price }}</span>
+            <span class="frequency">
+              {% if plan.frequency == '/hour' %}
+                / hora
+              {% elif plan.frequency == '/project' %}
+                / proyecto
+              {% else %}
+                / mes
+              {% endif %}
+            </span>
+            {% if plan.include_tax %}
+              <span class="tax-label">{{ plan.tax_label }}</span>
+            {% endif %}
+          </div>
+          <div class="plan-description">
+            {{ plan.description }}
+          </div>
+        </div>
+
+        <div class="card-features">
+          <ul>
+            {% for feature in plan.features %}
+              <li>
+                <span class="icon-check">✓</span>
+                {{ feature.text }}
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class="card-footer">
+          {% if plan.status == 'coming_soon' %}
+             <button class="cta-button disabled" disabled>Próximamente</button>
+          {% else %}
+             {% set href = plan.cta_link.url.href %}
+             {% if plan.cta_link.url.type is equalto "EMAIL_ADDRESS" %}
+                {% set href = "mailto:" + href %}
+             {% endif %}
+             <a href="{{ href }}" class="cta-button"
+                {% if plan.cta_link.open_in_new_tab %}target="_blank"{% endif %}
+                {% if plan.cta_link.rel %}rel="{{ plan.cta_link.rel }}"{% endif %}
+                >
+                {% if plan.cta_text %}
+                  {{ plan.cta_text }}
+                {% else %}
+                  Seleccionar Plan
+                {% endif %}
+             </a>
+          {% endif %}
+        </div>
+      </div>
+    {% endif %}
+  {% endfor %}
+</div>
+
+
