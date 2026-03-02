@@ -18,4 +18,4 @@ jobs:
           account_id: ${{ secrets.HUBSPOT_PORTAL_ID }}
           personal_access_key: ${{ secrets.HUBSPOT_ACCESS_TOKEN }}
           src_dir: "."
-          dest_dir: "'Carlosguisan Showcase'"
+          dest_dir: '\"Carlosguisan Showcase\"'
